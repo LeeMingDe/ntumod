@@ -1,0 +1,28 @@
+@import '../globalconstants/colors';
+@import '../globalconstants/layout';
+
+.Searchbar_wrapper {
+    width: 100%;
+
+    .search-input {
+        font-size: clamp(0.8rem, 1.5vw, 1.15rem);
+        font-weight: 500;
+        color: $dark-blue;
+        padding-bottom: 0.25rem;
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: inset;
+        border-color: $light-grey;
+        background-color: $light-blue;
+        width: clamp(55%, 65%, 90%);
+
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: inherit;
+        }
+    }
+    
+}

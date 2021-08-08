@@ -1,0 +1,36 @@
+@import "../base-styles";
+@import '../globalconstants/colors';
+@import '../globalconstants/layout';
+
+.Navbar {
+    background-color: $light-blue;
+    height:10vh;
+    width: 100%;
+    display: flex;
+    color: $dark-blue;
+    align-items: center;
+
+    .logo {
+        display: flex;
+        flex: 25%;
+        justify-content: center;
+    }
+
+    .searchbar {
+        display: flex;
+        justify-content: left;
+        flex: 55%;
+        @include for_breakpoint(mobile) {
+            display: none;
+        }
+    }
+
+    .academic-period {
+        white-space: pre-line;
+        display: flex;
+        justify-content: center; 
+        flex: 20%;
+        font-size: clamp(0.5rem, 2.5vw, 0.75rem);
+        font-weight: 600;
+    }
+}

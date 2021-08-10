@@ -1,38 +1,65 @@
+@charset "UTF-8";
 .Module-card_container {
-  border: 2px solid black;
+  display: flex;
+  white-space: pre-line;
+  flex-wrap: wrap;
+}
+.Module-card_container .module-card-left_container {
   font-size: clamp(0.85rem, 1.6vh, 1.5rem);
 }
-.Module-card_container .title_container {
+.Module-card_container .module-card-left_container .title_container {
   color: #181C62;
   font-weight: bold;
   font-size: clamp(1rem, 2vh, 2rem);
   margin: 0.4em 0;
 }
-.Module-card_container .course-credit_container {
+.Module-card_container .module-card-left_container .course-credit_container {
   color: #69707A;
   font-weight: 500;
   margin: 0.4em 0;
 }
-.Module-card_container .category_container {
+.Module-card_container .module-card-left_container .category_container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em 0.8em;
   margin: 0.5em 0;
 }
-.Module-card_container .category_container .category_wrapper {
+.Module-card_container .module-card-left_container .category_container .category_wrapper {
   background-color: #EBECFE;
   border-radius: 0.25em;
   font-weight: 700;
   color: #181C62;
   padding: 0.1em 0.3em;
 }
-.Module-card_container .description_container {
+.Module-card_container .module-card-left_container .description_container {
   margin: 1em 0;
-  color: #393939;
+  color: #69707A;
 }
-.Module-card_container .additional-info_container {
-  color: #393939;
-  white-space: pre-line;
+.Module-card_container .module-card-left_container .additional-info_container {
   margin: 1em 0;
-  color: #393939;
+  color: #69707A;
+}
+.Module-card_container .module-card-right_container {
+  flex: 20%;
+  font-size: clamp(0.85rem, 1.6vh, 1.5rem);
+  color: #69707A;
+  margin: auto;
+}
+.Module-card_container .module-card-right_container .exam_container {
+  margin: 1rem 0;
+}
+.Module-card_container .module-card-right_container .workload_container ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.Module-card_container .module-card-right_container .workload_container ul li {
+  position: relative;
+  padding-left: 1.25em;
+}
+.Module-card_container .module-card-right_container .workload_container ul li:before {
+  padding-left: 0.5em;
+  content: "•";
+  position: absolute;
+  left: 0;
 }

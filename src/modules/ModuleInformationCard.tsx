@@ -16,7 +16,7 @@ const DUMMY_DATA = {
     tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
     prereq: "CS6901",
     availableFor: "CS Year 2, CS Year 3",
-    availableIn: "Sem 1, Sem 2, ST 1, ST 2",
+    availableIn: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
     exam: "27-Nov-2021 1:00PM 2 hrs",
     workload: {
         tut: 2,
@@ -24,7 +24,6 @@ const DUMMY_DATA = {
         lab: 2
     }
 }
-
 
 interface Module {
     title: string,
@@ -34,7 +33,7 @@ interface Module {
     description: string,
     prereq: string,
     availableFor: string,
-    availableIn: string,
+    availableIn: Array<String>,
     exam: string,
     workload: {
         tut: number,
@@ -60,29 +59,59 @@ const ModuleInformationCard: React.FC<Props> = () => {
         </div>
     })
 
+    const renderAvailability = moduleDetails?.availableIn.map((items, idx) => {
+        return <div key={idx}>
+            <b>{items}</b>
+        </div>
+    })
+
+    const renderWorkload = <div>
+        {moduleDetails?.workload.lab + moduleDetails?.workload.tut + moduleDetails?.workload.lect} hours
+        <ul>
+            <li>Lecture: {moduleDetails?.workload.lect}</li>
+            <li>Tutorial: {moduleDetails?.workload.tut}</li>
+            <li>Lab: {moduleDetails?.workload.lab}</li>
+        </ul>
+    </div>
+
     return (
         <div className="Module-card_container">
-            <div className="title_container">
-                {moduleDetails?.title}
+            <div className="module-card-left_container">
+                <div className="title_container">
+                    {moduleDetails?.title}
+                </div>
+                <div className="course-credit_container">
+                    {`${moduleDetails?.course } · ${moduleDetails?.numCredits}`}
+                </div>
+                <div className="category_container">
+                    {renderCategory}
+                </div>
+                <div className="description_container">
+                    {moduleDetails?.description}
+                </div>
+                <div className="additional-info_container">
+                    <b>Prerequisites</b>
+                    {"\n"}
+                    {moduleDetails?.prereq}
+                </div>
+                <div className="additional-info_container">
+                    <b>Available for</b>
+                    {"\n"}
+                    {moduleDetails?.availableFor}
+                </div>
             </div>
-            <div className="course-credit_container">
-                {`${moduleDetails?.course } · ${moduleDetails?.numCredits}`}
-            </div>
-            <div className="category_container">
-                {renderCategory}
-            </div>
-            <div className="description_container">
-                {moduleDetails?.description}
-            </div>
-            <div className="additional-info_container">
-                <b>Prerequisites</b>
-                {"\n"}
-                {moduleDetails?.prereq}
-            </div>
-            <div className="additional-info_container">
-                <b>Available for</b>
-                {"\n"}
-                {moduleDetails?.availableFor}
+            <div className="module-card-right_container px-2">
+                {renderAvailability}
+                <div className="exam_container">
+                    <b>Exam</b>
+                    {"\n"}
+                    {moduleDetails?.exam}
+                </div>
+                <div className="workload_container">
+                    <b>Workload</b>
+                    {"\n"}
+                    {renderWorkload}
+                </div>
             </div>
         </div>
     )

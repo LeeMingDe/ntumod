@@ -6,14 +6,20 @@ interface Props {
 
 const DUMMY_DATA = [
     {
-        title: "test",
+        title: "CS6969 Digital connections and physical needs",
         course: "com sci",
         numCredits: "3AUS",
-        category: "test",
-        description: "test",
-        prereq: "somtihing",
+        category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
+        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
+        prereq: "CS6901",
         availableFor: "CS Year 2, CS Year 3",
-        availableIn: "Sem 1, Sem 2, ST 1, ST 2",
+        availableIn: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
         exam: "27-Nov-2021 1:00PM 2 hrs",
         workload: {
             tut: 2,
@@ -22,14 +28,20 @@ const DUMMY_DATA = [
         }
     },
     {
-        title: "test22222",
+        title: "CS6969 Digital connections and physical needs",
         course: "com sci",
         numCredits: "3AUS",
-        category: "test",
-        description: "test",
-        prereq: "somtihing",
+        category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
+        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
+        prereq: "CS6901",
         availableFor: "CS Year 2, CS Year 3",
-        availableIn: "Sem 1, Sem 2, ST 1, ST 2",
+        availableIn: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
         exam: "27-Nov-2021 1:00PM 2 hrs",
         workload: {
             tut: 2,
@@ -40,7 +52,7 @@ const DUMMY_DATA = [
 ]
 
 const Pagination: React.FC<Props> = () => {
-    // const [data, setData] = useState([]);
+    const [data, setData] = useState([]);
     // const [currentPage, setCurrentPage] = useState(1);
     // const [itemsPerPage, setItemsPerPage] = useState();
     // const [currentItems, setCurrentItems] = useState([]);

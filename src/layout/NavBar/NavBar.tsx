@@ -1,16 +1,16 @@
 import React from 'react';
 
 import '../../styles/layout/navbar.scss'
-import Searchbar from './Searchbar';
+import NavSearchbar from './NavSearchbar';
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
     return (
         <nav className="Navbar">
             <div className="logo">
                 LOGO
             </div>
             <div className="searchbar">
-                <Searchbar />
+                <NavSearchbar />
             </div>
             <div className="academic-period">
                 {`Academic Year 2020/21\nSpecial Term II, Week 6`}

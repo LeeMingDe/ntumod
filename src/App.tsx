@@ -1,10 +1,18 @@
 import React from 'react';
-import NavBar from './layout/NavBar/NavBar';
+import NavBar from './layout/navbar/NavBar';
+import ModulePageContainer from './modules/ModulePageContainer';
+
+import './styles/app.scss'
 
 const App = () => {
   return (
-    <div className="App">
-      <NavBar />
+    <div className="Page-container">
+        <div className="content-wrapper">
+            <NavBar />
+            <main>
+                <ModulePageContainer />
+            </main>
+        </div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../../styles/layout/searchbar.scss'
+import '../../styles/layout/nav-searchbar.scss'
 
-const Searchbar = () => {
+const NavSearchbar: React.FC = () => {
     return (
         <div className="Searchbar_wrapper">
             <input
@@ -13,4 +13,4 @@ const Searchbar = () => {
     )
 }
 
-export default Searchbar;
+export default NavSearchbar;

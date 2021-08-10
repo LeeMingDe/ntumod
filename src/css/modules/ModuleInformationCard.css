@@ -1,0 +1,38 @@
+.Module-card_container {
+  border: 2px solid black;
+  font-size: clamp(0.85rem, 1.6vh, 1.5rem);
+}
+.Module-card_container .title_container {
+  color: #181C62;
+  font-weight: bold;
+  font-size: clamp(1rem, 2vh, 2rem);
+  margin: 0.4em 0;
+}
+.Module-card_container .course-credit_container {
+  color: #69707A;
+  font-weight: 500;
+  margin: 0.4em 0;
+}
+.Module-card_container .category_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 0.8em;
+  margin: 0.5em 0;
+}
+.Module-card_container .category_container .category_wrapper {
+  background-color: #EBECFE;
+  border-radius: 0.25em;
+  font-weight: 700;
+  color: #181C62;
+  padding: 0.1em 0.3em;
+}
+.Module-card_container .description_container {
+  margin: 1em 0;
+  color: #393939;
+}
+.Module-card_container .additional-info_container {
+  color: #393939;
+  white-space: pre-line;
+  margin: 1em 0;
+  color: #393939;
+}

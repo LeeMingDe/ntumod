@@ -29,18 +29,19 @@ const DUMMY_DATA = {
     }
 }
 
-interface Props {
+interface Props extends Module {
 
 }
 
-const ModuleInformationCard: React.FC<Props> = () => {
-    const [moduleDetails, setModuleDetails] = useState<Module>();
+const ModuleInformationCard: React.FC<Props> = props => {
+    const [moduleDetails, setmoduleDetails] = useState<Module>();
 
     useEffect(() => {
-        setModuleDetails(DUMMY_DATA);
-    }, [])
+        console.log(props)
+        setmoduleDetails(props);
+    }, [props])
 
-    const renderCategory = moduleDetails.category.map((items, idx) => {
+    const renderCategory = moduleDetails?.category.map((items, idx) => {
         return <div key={idx} className="category_wrapper">
             {items}
         </div>
@@ -50,25 +51,25 @@ const ModuleInformationCard: React.FC<Props> = () => {
         let prerequisite = null;
         let corequisite = null;
         let preclusion = null;
-        if (moduleDetails.prerequisite) {
+        if (moduleDetails?.prerequisite) {
             prerequisite = <div className="my-1">
                 <b>Prerequisites</b>
                 {"\n"}
-                {moduleDetails.prerequisite}
+                {moduleDetails?.prerequisite}
             </div>
         }
-        if (moduleDetails.corequisite) {
+        if (moduleDetails?.corequisite) {
             corequisite = <div className="my-1">
                 <b>Corequisites</b>
                 {"\n"}
-                {moduleDetails.corequisite}
+                {moduleDetails?.corequisite}
             </div>
         }
-        if (moduleDetails.preclusion) {
+        if (moduleDetails?.preclusion) {
             preclusion = <div className="my-1">
                 <b>Preclusion</b>
                 {"\n"}
-                {moduleDetails.preclusion}
+                {moduleDetails?.preclusion}
             </div>
         }
         return <div className="additional-info_container">
@@ -79,18 +80,18 @@ const ModuleInformationCard: React.FC<Props> = () => {
         
     }
 
-    const renderSemesters = moduleDetails.semesters.map((items, idx) => {
+    const renderSemesters = moduleDetails?.semesters.map((items, idx) => {
         return <div key={idx}>
             <b>{items}</b>
         </div>
     })
 
     const renderWorkload = <div>
-        {moduleDetails.workload.lab + moduleDetails.workload.tut + moduleDetails.workload.lect} hours
+        {moduleDetails?.workload.lab + moduleDetails?.workload.tut + moduleDetails?.workload.lect} hours
         <ul>
-            <li>Lecture: {moduleDetails.workload.lect}</li>
-            <li>Tutorial: {moduleDetails.workload.tut}</li>
-            <li>Lab: {moduleDetails.workload.lab}</li>
+            <li>Lecture: {moduleDetails?.workload.lect}</li>
+            <li>Tutorial: {moduleDetails?.workload.tut}</li>
+            <li>Lab: {moduleDetails?.workload.lab}</li>
         </ul>
     </div>
 
@@ -98,22 +99,22 @@ const ModuleInformationCard: React.FC<Props> = () => {
         <div className="Module-card_container">
             <div className="module-card-left_container">
                 <div className="title_container">
-                    {moduleDetails.title}
+                    {moduleDetails?.title}
                 </div>
                 <div className="course-credit_container">
-                    {`${moduleDetails.course } · ${moduleDetails.moduleCredit}`}
+                    {`${moduleDetails?.course } · ${moduleDetails?.moduleCredit}`}
                 </div>
                 <div className="category_container">
                     {renderCategory}
                 </div>
                 <div className="description_container">
-                    {moduleDetails.description}
+                    {moduleDetails?.description}
                 </div>
                 {renderRequisites()}
                 <div className="additional-info_container">
                     <b>Available for</b>
                     {"\n"}
-                    {moduleDetails.availableFor}
+                    {moduleDetails?.availableFor}
                 </div>
             </div>
             <div className="module-card-right_container px-2">
@@ -121,7 +122,7 @@ const ModuleInformationCard: React.FC<Props> = () => {
                 <div className="exam_container">
                     <b>Exam</b>
                     {"\n"}
-                    {moduleDetails.exam}
+                    {moduleDetails?.exam}
                 </div>
                 <div className="workload_container">
                     <b>Workload</b>

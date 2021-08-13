@@ -4,7 +4,7 @@ import '../../styles/layout/nav-searchbar.scss'
 
 const NavSearchbar: React.FC = () => {
     return (
-        <div className="Searchbar_wrapper">
+        <div className="searchbar_wrapper">
             <input
                 className="search-input"
                 placeholder="Search course code, title and description"

@@ -6,6 +6,7 @@ import ModuleInformationCard from '../../modules/ModuleInformationCard';
 import '../../styles/layout/pagination.scss';
 import chevron from '../../icons/chevron.svg';
 import doubleChevron from '../../icons/doublechevron.svg'
+import ModuleFilter from '../../modules/ModuleFilter';
 
 interface Props {
     
@@ -201,42 +202,48 @@ const Pagination: React.FC<Props> = () => {
 
     return (
         <React.Fragment>
-             {renderData()}
-             <ul className="Pagination-bar">
-                <li>
-                    <button
-                        onClick={prevPageClickHandler}
-                        disabled={currentPage === pages[0] ? true : false}
-                    >
-                    <img src={doubleChevron} alt="double left chevron" className="left-chevron double-chevron"/>
-                    </button>
-                </li>
-                <li>
-                    <button
-                        onClick={prevPageClickHandler}
-                        disabled={currentPage === pages[0] ? true : false}
-                    >
-                    <img src={chevron} alt="left chevron" className="left-chevron single-chevron mx-2"/>
-                    </button>
-                </li>
-                {renderPageNumbers}
-                <li>
-                    <button
-                        onClick={nextPageClickHandler}
-                        disabled={currentPage === pages[pages.length - 1] ? true : false}
-                    >
-                    <img src={chevron} alt="right chevron" className="single-chevron mx-2"/>
-                    </button>
-                </li>
-                <li>
-                    <button
-                        onClick={nextPageClickHandler}
-                        disabled={currentPage === pages[pages.length - 1] ? true : false}
-                    >
-                    <img src={doubleChevron} alt="double right chevron" className="double-chevron"/>
-                    </button>
-                </li>
-             </ul>
+            <div className="pagination-content_wrapper">
+                <div>
+                    {renderData()}
+                    <ul className="pagination-bar">
+                        <li>
+                            <button
+                                onClick={firstPageClickHandler}
+                                className={currentPage === pages[0] ? "no-display" : null}
+                            >
+                            <img src={doubleChevron} alt="double left chevron" className="left-chevron double-chevron"/>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={prevPageClickHandler}
+                                className={currentPage === pages[0] ? "no-display" : null}
+                            >
+                            <img src={chevron} alt="left chevron" className="left-chevron single-chevron mx-2"/>
+                            </button>
+                        </li>
+                        {renderPageNumbers}
+                        <li>
+                            <button
+                                onClick={nextPageClickHandler}
+                                className={currentPage === pages[pages.length - 1] ? "no-display" : null}
+                            >
+                            <img src={chevron} alt="right chevron" className="single-chevron mx-2"/>
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                onClick={lastPageClickHandler}
+                                className={currentPage === pages[pages.length - 1] ? "no-display" : null}
+                            >
+                            <img src={doubleChevron} alt="double right chevron" className="double-chevron"/>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <ModuleFilter data={data}/>
+            </div>
+
         </React.Fragment>
     );
 }

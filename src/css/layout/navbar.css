@@ -9,7 +9,7 @@ body {
 }
 
 /* Media Queries */
-.Navbar {
+.navbar {
   background-color: #EBECFE;
   height: 10vh;
   width: 100%;
@@ -17,22 +17,22 @@ body {
   color: #181C62;
   align-items: center;
 }
-.Navbar .logo {
+.navbar .logo {
   display: flex;
   flex: 25%;
   justify-content: center;
 }
-.Navbar .searchbar {
+.navbar .searchbar {
   display: flex;
   justify-content: left;
   flex: 55%;
 }
 @media (only max-width: 667px) {
-  .Navbar .searchbar {
+  .navbar .searchbar {
     display: none;
   }
 }
-.Navbar .academic-period {
+.navbar .academic-period {
   white-space: pre-line;
   display: flex;
   justify-content: center;

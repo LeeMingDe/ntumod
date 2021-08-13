@@ -7,16 +7,21 @@ import './styles/app.scss'
 import './styles/globalconstants/spacing.scss'
 
 const App = () => {
-  return (
-    <div className="Page-container">
-        <div className="content-wrapper">
-            <NavBar />
-            <main>
-                <ModulePageContainer />
-            </main>
+    return (
+        <div className="page_container">
+            <div className="content_wrapper">
+                <NavBar />
+                  <main className="main_wrapper">
+                    <div className="navigation-tabs">
+                        test
+                    </div>
+                    <div>
+                        <ModulePageContainer />
+                    </div>
+                </main>
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default App;

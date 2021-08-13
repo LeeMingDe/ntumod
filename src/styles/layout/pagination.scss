@@ -1,6 +1,10 @@
 @import '../globalconstants/colors';
 
-.Pagination-bar {
+.pagination-content_wrapper {
+    display: flex;
+}
+
+.pagination-bar {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -43,5 +47,9 @@
         .left-chevron {
             transform: scaleX(-1);
         }
+    }
+
+    .no-display {
+        display: none;
     }
 }

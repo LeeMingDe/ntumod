@@ -5,7 +5,7 @@ import NavSearchbar from './NavSearchbar';
 
 const NavBar: React.FC = () => {
     return (
-        <nav className="Navbar">
+        <nav className="navbar">
             <div className="logo">
                 LOGO
             </div>

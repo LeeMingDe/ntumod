@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Module } from '../interfaces/modules';
 
-import '../styles/modules/ModuleInformationCard.scss';
+import '../styles/modules/module-information-card.scss';
 
 const DUMMY_DATA = {
     moduleCode: "CS6969",
@@ -37,7 +37,6 @@ const ModuleInformationCard: React.FC<Props> = props => {
     const [moduleDetails, setmoduleDetails] = useState<Module>();
 
     useEffect(() => {
-        console.log(props)
         setmoduleDetails(props);
     }, [props])
 
@@ -77,7 +76,6 @@ const ModuleInformationCard: React.FC<Props> = props => {
             {corequisite}
             {preclusion}
         </div>
-        
     }
 
     const renderSemesters = moduleDetails?.semesters.map((items, idx) => {

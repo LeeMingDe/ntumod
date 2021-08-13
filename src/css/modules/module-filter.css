@@ -1,0 +1,25 @@
+.module-filter_container {
+  margin: 5em 5em 5em 5em;
+}
+.module-filter_container .title_container {
+  background-color: #181C62;
+  display: flex;
+  color: white;
+  border-radius: 1.5em 1.5em 0 0;
+  padding: 0.65em 0.75em 0.85em 0.75em;
+  align-items: center;
+}
+.module-filter_container .title_container .title {
+  font-weight: 600;
+  margin: 0.1em 1em;
+  width: 7em;
+}
+.module-filter_container .title_container .clear-selection {
+  font-size: 0.95rem;
+  font-weight: 300;
+  cursor: pointer;
+  margin-right: 0.5em;
+}
+.module-filter_container .filter-options_container {
+  background-color: #EBECFE;
+}

@@ -1,0 +1,32 @@
+@import '../globalconstants/colors';
+
+.module-filter_container {
+    // border: 1px solid black;
+    margin: 5em 5em 5em 5em;
+    
+    .title_container {
+        background-color: $dark-blue;
+        display: flex;
+        color: white;
+        border-radius: 1.5em  1.5em 0 0;
+        padding: 0.65em 0.75em 0.85em 0.75em;
+        align-items: center;
+
+        .title {
+            font-weight: 600;
+            margin: 0.1em 1em;
+            width: 7em;
+        }
+
+        .clear-selection {
+            font-size: 0.95rem;
+            font-weight: 300;
+            cursor: pointer;
+            margin-right: 0.5em;
+        }
+    }
+
+    .filter-options_container {
+        background-color: $light-blue;
+    }
+}

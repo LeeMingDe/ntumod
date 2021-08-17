@@ -1,10 +1,10 @@
 import React from 'react';
-import Pagination from '../layout/pagination/Pagination';
+import ModulePagination from './ModulePagination';
 
 const ModulePageContainer: React.FC = () => {
     return (
         <div>
-            <Pagination />
+            <ModulePagination />
         </div>
     )
 }

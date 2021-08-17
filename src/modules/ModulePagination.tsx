@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { Module } from '../../interfaces/modules';
-import ModuleInformationCard from '../../modules/ModuleInformationCard';
+import { Module } from '../interfaces/modules';
+import ModuleInformationCard from './ModuleInformationCard';
 
-import '../../styles/layout/pagination.scss';
-import chevron from '../../icons/chevron.svg';
-import doubleChevron from '../../icons/doublechevron.svg'
-import ModuleFilter from '../../modules/ModuleFilter';
+import '../styles/modules/module-pagination.scss';
+import chevron from '../icons/chevron.svg';
+import doubleChevron from '../icons/doublechevron.svg'
+import ModuleFilter from './ModuleFilter';
 
 interface Props {
     
@@ -88,7 +88,7 @@ const DUMMY_DATA = [
     }
 ]
 
-const Pagination: React.FC<Props> = () => {
+const ModulePagination: React.FC<Props> = () => {
     const [data, setData] = useState<Array<Module>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [itemsPerPage, setItemsPerPage] = useState<number | null>(null);
@@ -248,4 +248,4 @@ const Pagination: React.FC<Props> = () => {
     );
 }
 
-export default Pagination;
+export default ModulePagination;

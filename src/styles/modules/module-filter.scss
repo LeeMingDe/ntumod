@@ -1,9 +1,9 @@
 @import '../globalconstants/colors';
 
-.module-filter_container {
+.module-filter-container {
     margin: 5em 5em 5em 5em;
     
-    .title_container {
+    .title-container {
         background-color: $dark-blue;
         display: flex;
         color: white;
@@ -22,28 +22,43 @@
             font-weight: 300;
             cursor: pointer;
             margin-right: 0.5em;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 
-    .filter-options_container {
+    .filter-options-container {
         background-color: $light-blue;
         padding-bottom: 1em;
         border-radius: 0 0 1.5em 1.5em;
 
-        .filter-options-description {
-            padding-left: 0.5em;
+        .filter-options-wrapper {
             font-size: 0.95rem;
             cursor: pointer;
             
             &:hover {
                 color: $hover-red;
             }
+
+            .filter-options-description {
+                padding-left: 0.5em;
+            }
         }
 
-        .filter-options_header {
+        .filter-options-header {
             font-weight: 600;
             padding-top: 0.8em;
             padding-bottom: 0.3em;
+        }
+
+        .dropdown-select {
+            background-color: $light-blue;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid $dark-grey;
+            padding: 0.3rem 0;
         }
     }
 }

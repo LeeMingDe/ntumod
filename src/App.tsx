@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './layout/Footer';
 
 import NavBar from './layout/navbar/NavBar';
 import ModulePageContainer from './modules/ModulePageContainer';
@@ -8,10 +9,10 @@ import './styles/globalconstants/spacing.scss'
 
 const App = () => {
     return (
-        <div className="page_container">
-            <div className="content_wrapper">
+        <div className="page-container">
+            <div className="content-wrapper">
                 <NavBar />
-                  <main className="main_wrapper">
+                  <main className="main-wrapper">
                     <div className="navigation-tabs">
                         test
                     </div>
@@ -20,6 +21,7 @@ const App = () => {
                     </div>
                 </main>
             </div>
+            <Footer />
         </div>
     );
 }

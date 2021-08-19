@@ -3,32 +3,6 @@ import { Module } from '../interfaces/modules';
 
 import '../styles/modules/module-information-card.scss';
 
-const DUMMY_DATA = {
-    moduleCode: "CS6969",
-    title: "CS6969 Digital connections and physical needs",
-    course: "com sci",
-    moduleCredit: "3AUS",
-    category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
-    prerequisite: "CS6901",
-    corequisite: "asdas",
-    preclusion: "asdas",
-    availableFor: "CS Year 2, CS Year 3",
-    semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
-    exam: "27-Nov-2021 1:00PM 2 hrs",
-    workload: {
-        tut: 2,
-        lect: 2,
-        lab: 2
-    }
-}
-
 interface Props extends Module {
 
 }
@@ -41,7 +15,7 @@ const ModuleInformationCard: React.FC<Props> = props => {
     }, [props])
 
     const renderCategory = moduleDetails?.category.map((items, idx) => {
-        return <div key={idx} className="category_wrapper">
+        return <div key={idx} className="category-wrapper">
             {items}
         </div>
     })
@@ -71,7 +45,7 @@ const ModuleInformationCard: React.FC<Props> = props => {
                 {moduleDetails?.preclusion}
             </div>
         }
-        return <div className="additional-info_container">
+        return <div className="additional-info-container">
             {prerequisite}
             {corequisite}
             {preclusion}
@@ -94,35 +68,43 @@ const ModuleInformationCard: React.FC<Props> = props => {
     </div>
 
     return (
-        <div className="Module-card_container">
-            <div className="module-card-left_container">
-                <div className="title_container">
+        <div className="Module-card-container">
+            <div className="module-card-left-container">
+                <div className="title-container">
                     {moduleDetails?.title}
                 </div>
-                <div className="course-credit_container">
-                    {`${moduleDetails?.course } · ${moduleDetails?.moduleCredit}`}
+                <div className="course-credit-container">
+                    {`${moduleDetails?.course } · ${moduleDetails?.academicUnits}AUs`}
                 </div>
-                <div className="category_container">
+                <div className="category-container">
                     {renderCategory}
                 </div>
-                <div className="description_container">
+                <div className="description-container">
                     {moduleDetails?.description}
                 </div>
                 {renderRequisites()}
-                <div className="additional-info_container">
+                <div className="additional-info-container">
                     <b>Available for</b>
                     {"\n"}
                     {moduleDetails?.availableFor}
                 </div>
+                {moduleDetails?.isPassFail !== undefined
+                    ? <div className="additional-info-container">
+                        <b>Additional information</b>
+                        {"\n"}
+                        Module grading is pass/fail
+                    </div> 
+                    : null
+                }
             </div>
-            <div className="module-card-right_container px-2">
+            <div className="module-card-right-container px-2">
                 {renderSemesters}
-                <div className="exam_container">
+                <div className="exam-container">
                     <b>Exam</b>
                     {"\n"}
                     {moduleDetails?.exam}
                 </div>
-                <div className="workload_container">
+                <div className="workload-container">
                     <b>Workload</b>
                     {"\n"}
                     {renderWorkload}

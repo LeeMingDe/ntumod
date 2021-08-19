@@ -17,7 +17,7 @@ const DUMMY_DATA = [
         moduleCode: "CS6969",
         title: "CS6969 Digital connections and physical needs",
         course: "com sci",
-        moduleCredit: "3AUS",
+        academicUnits: 3,
         category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -29,7 +29,8 @@ const DUMMY_DATA = [
         prerequisite: "CS6901",
         preclusion: "asdas",
         availableFor: "CS Year 2, CS Year 3",
-        semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
+        semesters: ["Semester 1", "Semester 2", "Special Term 1", "Special Term 2"],
+        isPassFail: true,
         exam: "27-Nov-2021 1:00PM 2 hrs",
         workload: {
             tut: 2,
@@ -41,7 +42,7 @@ const DUMMY_DATA = [
         moduleCode: "CS6969",
         title: "CS6969 Digital connections and physical needs",
         course: "com sci",
-        moduleCredit: "3AUS",
+        academicUnits: 2,
         category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -55,6 +56,7 @@ const DUMMY_DATA = [
         preclusion: "asdas",
         availableFor: "CS Year 2, CS Year 3",
         semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
+        isPassFail: false,
         exam: "27-Nov-2021 1:00PM 2 hrs",
         workload: {
             tut: 2,
@@ -66,7 +68,7 @@ const DUMMY_DATA = [
         moduleCode: "CS6969",
         title: "CS6969 Digital connections and physical needs",
         course: "com sci",
-        moduleCredit: "3AUS",
+        academicUnits: 3,
         category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
         molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -183,7 +185,7 @@ const ModulePagination: React.FC<Props> = () => {
                             moduleCode={moduleInformation.moduleCode}
                             title={moduleInformation.title}
                             course={moduleInformation.course}
-                            moduleCredit={moduleInformation.moduleCredit}
+                            academicUnits={moduleInformation.academicUnits}
                             category={moduleInformation.category}
                             description={moduleInformation.description}
                             prerequisite={moduleInformation.prerequisite}
@@ -191,6 +193,7 @@ const ModulePagination: React.FC<Props> = () => {
                             preclusion={moduleInformation.preclusion}
                             availableFor={moduleInformation.availableFor}
                             semesters={moduleInformation.semesters}
+                            isPassFail={moduleInformation.isPassFail}
                             exam={moduleInformation.exam}
                             workload={moduleInformation.workload}
                         />
@@ -202,7 +205,7 @@ const ModulePagination: React.FC<Props> = () => {
 
     return (
         <React.Fragment>
-            <div className="pagination-content_wrapper">
+            <div className="pagination-content-wrapper">
                 <div>
                     {renderData()}
                     <ul className="pagination-bar">
@@ -241,7 +244,7 @@ const ModulePagination: React.FC<Props> = () => {
                         </li>
                     </ul>
                 </div>
-                <ModuleFilter data={data}/>
+                <ModuleFilter data={data} setData={setData}/>
             </div>
 
         </React.Fragment>

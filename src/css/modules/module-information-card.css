@@ -1,63 +1,63 @@
 @charset "UTF-8";
-.Module-card_container {
+.Module-card-container {
   display: flex;
   white-space: pre-line;
   flex-wrap: wrap;
 }
-.Module-card_container .module-card-left_container {
+.Module-card-container .module-card-left-container {
   font-size: clamp(0.85rem, 1.6vh, 1.5rem);
 }
-.Module-card_container .module-card-left_container .title_container {
+.Module-card-container .module-card-left-container .title-container {
   color: #181C62;
   font-weight: bold;
   font-size: clamp(1rem, 2vh, 2rem);
   margin: 0.4em 0;
 }
-.Module-card_container .module-card-left_container .course-credit_container {
+.Module-card-container .module-card-left-container .course-credit-container {
   color: #69707A;
   font-weight: 500;
   margin: 0.4em 0;
 }
-.Module-card_container .module-card-left_container .category_container {
+.Module-card-container .module-card-left-container .category-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em 0.8em;
   margin: 0.5em 0;
 }
-.Module-card_container .module-card-left_container .category_container .category_wrapper {
+.Module-card-container .module-card-left-container .category-container .category-wrapper {
   background-color: #EBECFE;
   border-radius: 0.25em;
   font-weight: 700;
   color: #181C62;
   padding: 0.1em 0.3em;
 }
-.Module-card_container .module-card-left_container .description_container {
+.Module-card-container .module-card-left-container .description-container {
   margin: 1em 0;
   color: #69707A;
 }
-.Module-card_container .module-card-left_container .additional-info_container {
+.Module-card-container .module-card-left-container .additional-info-container {
   margin: 1em 0;
   color: #69707A;
 }
-.Module-card_container .module-card-right_container {
+.Module-card-container .module-card-right-container {
   flex: 20%;
   font-size: clamp(0.85rem, 1.6vh, 1.5rem);
   color: #69707A;
   margin: auto;
 }
-.Module-card_container .module-card-right_container .exam_container {
+.Module-card-container .module-card-right-container .exam-container {
   margin: 1rem 0;
 }
-.Module-card_container .module-card-right_container .workload_container ul {
+.Module-card-container .module-card-right-container .workload-container ul {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
-.Module-card_container .module-card-right_container .workload_container ul li {
+.Module-card-container .module-card-right-container .workload-container ul li {
   position: relative;
   padding-left: 1.25em;
 }
-.Module-card_container .module-card-right_container .workload_container ul li:before {
+.Module-card-container .module-card-right-container .workload-container ul li:before {
   padding-left: 0.5em;
   content: "•";
   position: absolute;

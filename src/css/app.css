@@ -1,15 +1,15 @@
-.page_container {
+.page-container {
   display: flex;
   flex-direction: column;
 }
-.page_container .content_wrapper {
+.page-container .content-wrapper {
   flex: 1;
   padding-bottom: 3rem;
   min-height: 100vh;
 }
-.page_container .content_wrapper .main_wrapper {
+.page-container .content-wrapper .main-wrapper {
   display: flex;
 }
-.page_container .content_wrapper .main_wrapper .navigation-tabs {
+.page-container .content-wrapper .main-wrapper .navigation-tabs {
   flex: 0 0 clamp(5em, 13vw, 11em);
 }

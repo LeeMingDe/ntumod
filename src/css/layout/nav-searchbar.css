@@ -1,7 +1,7 @@
-.searchbar_wrapper {
+.searchbar-wrapper {
   width: 100%;
 }
-.searchbar_wrapper .search-input {
+.searchbar-wrapper .search-input {
   font-size: clamp(0.8rem, 1.5vw, 1.15rem);
   font-weight: 500;
   color: #181C62;
@@ -14,9 +14,9 @@
   background-color: #EBECFE;
   width: clamp(55%, 65%, 90%);
 }
-.searchbar_wrapper .search-input:focus {
+.searchbar-wrapper .search-input:focus {
   outline: none;
 }
-.searchbar_wrapper .search-input::placeholder {
+.searchbar-wrapper .search-input::placeholder {
   color: inherit;
 }

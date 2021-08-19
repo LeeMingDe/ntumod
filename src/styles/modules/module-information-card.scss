@@ -1,33 +1,33 @@
 @import '../globalconstants/colors';
 
-.Module-card_container {
+.Module-card-container {
     display: flex;
     white-space: pre-line;
     flex-wrap: wrap;
 
-    .module-card-left_container {
+    .module-card-left-container {
         font-size: clamp(0.85rem, 1.6vh, 1.5rem);
     
-        .title_container {
+        .title-container {
             color: $dark-blue;
             font-weight: bold;
             font-size: clamp(1rem, 2vh, 2rem);
             margin: 0.4em 0;
         }
         
-        .course-credit_container {
+        .course-credit-container {
             color: $light-grey;
             font-weight: 500;
             margin: 0.4em 0;
         }
     
-        .category_container {
+        .category-container {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5em 0.8em;
             margin: 0.5em 0;
     
-            .category_wrapper {
+            .category-wrapper {
                 background-color: $light-blue;
                 border-radius: 0.25em;
                 font-weight: 700;
@@ -36,28 +36,28 @@
             }
         }
     
-        .description_container {
+        .description-container {
             margin: 1em 0;
             color: $light-grey;
         }
     
-        .additional-info_container {
+        .additional-info-container {
             margin: 1em 0;
             color: $light-grey;
         }
     }
     
-    .module-card-right_container {
+    .module-card-right-container {
         flex: 20%;
         font-size: clamp(0.85rem, 1.6vh, 1.5rem);
         color: $light-grey;
         margin: auto;
 
-        .exam_container {
+        .exam-container {
             margin: 1rem 0;
         }
 
-        .workload_container {
+        .workload-container {
             ul {
                 margin: 0;
                 padding: 0;

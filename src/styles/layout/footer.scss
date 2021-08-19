@@ -1,0 +1,36 @@
+@import '../globalconstants/colors';
+
+.footer-container {
+    background-color: $light-blue;
+    display: flex;
+    flex-direction: column;
+    white-space: pre-line;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3em 0;
+    color: $dark-blue;
+
+    .footer-logo-wrapper {
+        font-weight: 400;
+
+        .footer-logo {
+            padding: 0em 2em;
+        }
+    }
+
+    .footer-links-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding: 1em 0;
+        font-weight: 400;
+        justify-content: space-around;
+        width: 60%;
+
+        .footer-contribute {
+            font-weight: 700;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}

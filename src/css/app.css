@@ -9,7 +9,17 @@
 }
 .page-container .content-wrapper .main-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2em;
 }
-.page-container .content-wrapper .main-wrapper .navigation-tabs {
-  flex: 0 0 clamp(5em, 13vw, 11em);
+.page-container .content-wrapper .main-wrapper .nav-tabs {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 25%;
+  width: 100%;
+}
+.page-container .content-wrapper .main-wrapper .main-content {
+  flex: 1 1 75%;
+  width: 100%;
 }

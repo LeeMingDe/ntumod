@@ -1,7 +1,7 @@
 @import '../globalconstants/colors';
 
 .module-filter-container {
-    margin: 5em 5em 5em 5em;
+    margin: 1em 0em 1em 5em;
     
     .title-container {
         background-color: $dark-blue;
@@ -49,8 +49,8 @@
 
         .filter-options-header {
             font-weight: 600;
-            padding-top: 0.8em;
-            padding-bottom: 0.3em;
+            padding-top: 0.6em;
+            padding-bottom: 0.1em;
         }
 
         .dropdown-select {

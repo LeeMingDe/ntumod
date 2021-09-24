@@ -1,5 +1,6 @@
 .pagination-content-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .pagination-bar {
@@ -30,13 +31,13 @@
 }
 .pagination-bar button .double-chevron {
   margin-top: 0.5rem;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 .pagination-bar button .single-chevron {
   margin-top: 0.25rem;
-  width: 1rem;
-  height: 1rem;
+  width: 0.85rem;
+  height: 0.85rem;
 }
 .pagination-bar button .left-chevron {
   transform: scaleX(-1);

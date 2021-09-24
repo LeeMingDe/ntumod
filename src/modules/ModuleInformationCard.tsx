@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Module } from '../interfaces/modules';
 
 import '../styles/modules/module-information-card.scss';
 
 interface Props extends Module {
-
+    detailedView: boolean
 }
 
 const ModuleInformationCard: React.FC<Props> = props => {
@@ -71,24 +73,35 @@ const ModuleInformationCard: React.FC<Props> = props => {
         <div className="Module-card-container">
             <div className="module-card-left-container">
                 <div className="title-container">
-                    {moduleDetails?.title}
+                    <Link 
+                        to={`/module/${moduleDetails?.moduleCode}/${moduleDetails?.title.toLowerCase().replaceAll(" ", "-")}`} 
+                        className="title"
+                    >
+                        {`${moduleDetails?.moduleCode} ${moduleDetails?.title}`}
+                    </Link>
                 </div>
                 <div className="course-credit-container">
-                    {`${moduleDetails?.course } · ${moduleDetails?.academicUnits}AUs`}
+                    {`${moduleDetails?.course } · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.academicUnits}AUs`}
                 </div>
-                <div className="category-container">
-                    {renderCategory}
-                </div>
+                {props.detailedView ? <hr className="horizontal-divider"/> : null}
+                {props.detailedView ? <div className="category-container">
+                        {renderCategory}
+                    </div>
+                    : null
+                }
                 <div className="description-container">
                     {moduleDetails?.description}
                 </div>
                 {renderRequisites()}
-                <div className="additional-info-container">
-                    <b>Available for</b>
-                    {"\n"}
-                    {moduleDetails?.availableFor}
-                </div>
-                {moduleDetails?.isPassFail !== undefined
+                {props.detailedView ? <div className="additional-info-container">
+                        <b>Available for</b>
+                        {"\n"}
+                        {moduleDetails?.availableFor}
+                    </div>
+                    : null
+                }
+                
+                {moduleDetails?.isPassFail !== undefined && props.detailedView
                     ? <div className="additional-info-container">
                         <b>Additional information</b>
                         {"\n"}

@@ -15,8 +15,9 @@ interface Props {
 const DUMMY_DATA = [
     {
         moduleCode: "CS6969",
-        title: "CS6969 Digital connections and physical needs",
+        title: "Digital connections and physical needs",
         course: "com sci",
+        faculty: "School of computing",
         academicUnits: 3,
         category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -40,8 +41,9 @@ const DUMMY_DATA = [
     },
     {
         moduleCode: "CS6969",
-        title: "CS6969 Digital connections and physical needs",
+        title: "Digital connections and physical needs",
         course: "com sci",
+        faculty: "School of computing",
         academicUnits: 2,
         category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -66,8 +68,9 @@ const DUMMY_DATA = [
     },
     {
         moduleCode: "CS6969",
-        title: "CS6969 Digital connections and physical needs",
+        title: "Digital connections and physical needs",
         course: "com sci",
+        faculty: "School of computing",
         academicUnits: 3,
         category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
         description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
@@ -185,6 +188,7 @@ const ModulePagination: React.FC<Props> = () => {
                             moduleCode={moduleInformation.moduleCode}
                             title={moduleInformation.title}
                             course={moduleInformation.course}
+                            faculty={moduleInformation.faculty}
                             academicUnits={moduleInformation.academicUnits}
                             category={moduleInformation.category}
                             description={moduleInformation.description}
@@ -196,6 +200,7 @@ const ModulePagination: React.FC<Props> = () => {
                             isPassFail={moduleInformation.isPassFail}
                             exam={moduleInformation.exam}
                             workload={moduleInformation.workload}
+                            detailedView = {false}
                         />
                     );
                 })}

@@ -1,5 +1,5 @@
 .module-filter-container {
-  margin: 5em 5em 5em 5em;
+  margin: 1em 0em 1em 5em;
 }
 .module-filter-container .title-container {
   background-color: #181C62;
@@ -40,8 +40,8 @@
 }
 .module-filter-container .filter-options-container .filter-options-header {
   font-weight: 600;
-  padding-top: 0.8em;
-  padding-bottom: 0.3em;
+  padding-top: 0.6em;
+  padding-bottom: 0.1em;
 }
 .module-filter-container .filter-options-container .dropdown-select {
   background-color: #EBECFE;

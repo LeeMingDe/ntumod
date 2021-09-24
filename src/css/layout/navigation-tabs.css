@@ -1,0 +1,42 @@
+.nav-tabs-wrapper {
+  height: clamp(10em, 2vh, 20em);
+  width: clamp(10em, 2vh, 20em);
+  background-color: #EBECFE;
+  border-radius: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: bold;
+  color: #181C62;
+  position: relative;
+  z-index: 0;
+}
+.nav-tabs-wrapper .nav-tabs-active {
+  color: white;
+  z-index: 1;
+}
+.nav-tabs-wrapper .active-tabs-overlay {
+  position: absolute;
+  background-color: #181C62;
+  height: clamp(3em, 1vh, 5em);
+  width: clamp(9em, 2vh, 20em);
+  right: 0.5em;
+  border-radius: 1em;
+  z-index: -1;
+}
+.nav-tabs-wrapper .active-tabs-module {
+  top: 0.7em;
+}
+.nav-tabs-wrapper .active-tabs-contribute {
+  top: 3.5em;
+}
+.nav-tabs-wrapper .active-tabs-settings {
+  top: 6.45em;
+}
+.nav-tabs-wrapper .tabs-title {
+  cursor: pointer;
+}
+.nav-tabs-wrapper .tabs-title:hover {
+  text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../styles/layout/navbar.scss'
 import NavSearchbar from './NavSearchbar';
@@ -6,9 +7,11 @@ import NavSearchbar from './NavSearchbar';
 const NavBar: React.FC = () => {
     return (
         <nav className="navbar">
-            <div className="logo">
-                LOGO
-            </div>
+            <Link to="/module" className="logo">
+                <div className="logo">
+                    LOGO
+                </div>
+            </Link>
             <div className="searchbar">
                 <NavSearchbar />
             </div>

@@ -8,6 +8,7 @@ export interface Module {
     moduleCode: String,
     title: string,
     course: string,
+    faculty: string,
     academicUnits: number,
     category: Array<string>,
     description?: string,

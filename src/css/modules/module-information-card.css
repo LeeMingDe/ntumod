@@ -5,18 +5,30 @@
   flex-wrap: wrap;
 }
 .Module-card-container .module-card-left-container {
-  font-size: clamp(0.85rem, 1.6vh, 1.5rem);
+  font-size: clamp(0.75rem, 1.4vh, 1.25rem);
 }
 .Module-card-container .module-card-left-container .title-container {
   color: #181C62;
   font-weight: bold;
-  font-size: clamp(1rem, 2vh, 2rem);
+  font-size: clamp(1rem, 1.6vh, 1.75rem);
   margin: 0.4em 0;
+}
+.Module-card-container .module-card-left-container .title-container .title {
+  text-decoration: none;
+  color: #181C62;
+}
+.Module-card-container .module-card-left-container .title-container .title:hover {
+  color: #2d479c;
 }
 .Module-card-container .module-card-left-container .course-credit-container {
   color: #69707A;
   font-weight: 500;
   margin: 0.4em 0;
+}
+.Module-card-container .module-card-left-container .horizontal-divider {
+  border: none;
+  border-top: 1px solid black;
+  margin: 1em 0;
 }
 .Module-card-container .module-card-left-container .category-container {
   display: flex;
@@ -41,7 +53,7 @@
 }
 .Module-card-container .module-card-right-container {
   flex: 20%;
-  font-size: clamp(0.85rem, 1.6vh, 1.5rem);
+  font-size: clamp(0.75rem, 1.4vh, 1.25rem);
   color: #69707A;
   margin: auto;
 }

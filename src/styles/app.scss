@@ -9,13 +9,22 @@
 
         .main-wrapper {
             display: flex;
-            
-            .navigation-tabs {
-                flex: 0 0 clamp(5em, 13vw, 11em);
-                
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2em;
+
+            .nav-tabs {
+                display: flex;
+                justify-content: center;
+                flex: 1 1 25%;
+                width: 100%;
+            }
+
+            .main-content {
+                flex: 1 1 75%;
+                width: 100%;
             }
         }
-
     }
 }
 

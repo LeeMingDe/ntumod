@@ -11,18 +11,18 @@ const Footer: React.FC = () => {
             </div>
             <div className="footer-links-wrapper">
                 <div className="footer-contribute">Contribute to NTU Mods</div>
-                <span>
+                <div>
                     About
-                </span>
-                <span>
+                </div>
+                <div>
                     Team
-                </span>
-                <span>
+                </div>
+                <div>
                     FAQ
-                </span>
-                <span>
+                </div>
+                <div>
                     GitHub
-                </span>
+                </div>
             </div>
             <div>
                 Inspired by NUSMods. Developed by NTUModsTeam, maintained by students. {'\n'}

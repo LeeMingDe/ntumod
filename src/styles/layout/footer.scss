@@ -21,11 +21,12 @@
 
     .footer-links-wrapper {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         padding: 1em 0;
         font-weight: 400;
         justify-content: space-around;
-        width: 60%;
+        width: 40%;
 
         .footer-contribute {
             font-weight: 700;

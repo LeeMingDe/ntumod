@@ -46,29 +46,43 @@ const ModuleDetailsPage: React.FC<Props> = () => {
     
     return (
         <div className="module-details-container">
-            {moduleInformation == null ? null :
-                <ModuleInformationCard
-                    moduleCode={moduleInformation.moduleCode}
-                    title={moduleInformation.title}
-                    course={moduleInformation.course}
-                    faculty={moduleInformation.faculty}
-                    academicUnits={moduleInformation.academicUnits}
-                    category={moduleInformation.category}
-                    description={moduleInformation.description}
-                    prerequisite={moduleInformation.prerequisite}
-                    corequisite={moduleInformation.corequisite}
-                    preclusion={moduleInformation.preclusion}
-                    availableFor={moduleInformation.availableFor}
-                    semesters={moduleInformation.semesters}
-                    isPassFail={moduleInformation.isPassFail}
-                    exam={moduleInformation.exam}
-                    workload={moduleInformation.workload}
-                    detailedView = {true}
-                />
-            }
+            <div>
+                <section id="details">
+                    {moduleInformation == null ? null :
+                        <ModuleInformationCard
+                            moduleCode={moduleInformation.moduleCode}
+                            title={moduleInformation.title}
+                            course={moduleInformation.course}
+                            faculty={moduleInformation.faculty}
+                            academicUnits={moduleInformation.academicUnits}
+                            category={moduleInformation.category}
+                            description={moduleInformation.description}
+                            prerequisite={moduleInformation.prerequisite}
+                            corequisite={moduleInformation.corequisite}
+                            preclusion={moduleInformation.preclusion}
+                            availableFor={moduleInformation.availableFor}
+                            semesters={moduleInformation.semesters}
+                            isPassFail={moduleInformation.isPassFail}
+                            exam={moduleInformation.exam}
+                            workload={moduleInformation.workload}
+                            detailedView = {true}
+                        />
+                    }
+                </section>
+                <section id="prerequisites" className=" pt-5 pb-5">
+                    asdasdasd
+                </section>
+                <section id="timetable" className=" pt-5 pb-5">
+                    asdasdas
+                </section>
+                <section id="reviews" className=" pt-5 pb-5">
+                    asdasdas
+                </section>
+            </div>
             <div>
                 <ModuleDetailsNavTab />
             </div>
+            
         </div>
     );
 };

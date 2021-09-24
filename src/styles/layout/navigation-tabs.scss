@@ -1,51 +1,44 @@
-@import '../globalconstants/colors.scss';
+@import '../globalconstants/colors';
 
-.nav-tabs-wrapper {
-    height: clamp(10em, 2vh, 20em);
-    width: clamp(10em, 2vh, 20em);
-    background-color: $light-blue;
-    border-radius: 1.5em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    font-weight: bold;
-    color: $dark-blue;
-    position: relative;
-    z-index: 0;
+.nav-tabs-container {
+    position: sticky;
+    top: 0;
+    padding-top: 2em;
 
-    .nav-tabs-active {
-        color: white;
-        z-index: 1;
-    }
-
-    .active-tabs-overlay {
-        position: absolute;
-        background-color: $dark-blue;
-        height: clamp(3em, 1vh, 5em);
-        width: clamp(9em, 2vh, 20em);
-        right: 0.5em;
-        border-radius: 1em;
-        z-index: -1;
-    }
-
-    .active-tabs-module {
-        top: 0.7em;
-    }
-
-    .active-tabs-contribute {
-        top: 3.5em;
-    }
-
-    .active-tabs-settings {
-        top: 6.45em;
-    }
+    .nav-tabs-wrapper {
+        height: clamp(10em, 2vh, 20em);
+        width: clamp(10em, 2vh, 20em);
+        background-color: $light-blue;
+        border-radius: 1.5em;
+        font-weight: bold;
+        color: $dark-blue;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        z-index: 0;
     
-    .tabs-title {
-        cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
+        .nav-tabs-li {
+            list-style-type: none;
+    
+            .active-tabs-overlay {
+                background-color: $dark-blue;
+                height: clamp(3em, 1vh, 5em);
+                width: clamp(9em, 2vh, 20em);
+                border-radius: 1em;
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .tabs-title {
+                cursor: pointer;
+        
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }

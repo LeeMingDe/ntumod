@@ -36,7 +36,9 @@ const App = () => {
                     <NavBar />
                     <main className="main-wrapper">
                         <div className="nav-tabs">
-                            <NavigationTabs />
+                            <div>
+                                <NavigationTabs />
+                            </div>
                         </div>
                         <div className="main-content">
                             { routes }

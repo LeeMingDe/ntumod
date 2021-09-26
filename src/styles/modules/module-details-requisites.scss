@@ -55,3 +55,11 @@
         }
     }
 }
+
+.module-req-disclaimer {
+    background-color: $warning;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: 1px solid $warning-border;
+    color: $warning-text;
+}

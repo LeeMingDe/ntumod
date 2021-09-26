@@ -6,12 +6,12 @@ import '../styles/layout/navigation-tabs.scss';
 const ModuleDetailsNavTab = () => {
     const [ isInitialRender, setIsInitialRender ] = useState(true);
 
-    const onActiveHandler = () => {
-        setIsInitialRender(false);
+    const onActiveHandler = isActive => {
+        setIsInitialRender(isActive);
     }
 
     return (
-        <nav className="ps-5 pe-2 nav-tabs-container">
+        <nav className="ps-2 me-3 nav-tabs-container">
             <ul className="nav-tabs-wrapper module-nav-tabs">
                 <li className="nav-tabs-li">
                     <div className="">
@@ -22,7 +22,7 @@ const ModuleDetailsNavTab = () => {
                             duration={500}
                             spy={true}
                             activeClass="active-tabs-overlay module-active-tabs-overlay"
-                            offset={-500}
+                            onSetActive={() => onActiveHandler(true)}
                         >
                             Details
                         </Link>
@@ -37,7 +37,7 @@ const ModuleDetailsNavTab = () => {
                             duration={500}
                             spy={true}
                             activeClass="active-tabs-overlay module-active-tabs-overlay"
-                            onSetActive={onActiveHandler}
+                            onSetActive={() => onActiveHandler(false)}
                         >
                             Prerequisites
                         </Link>
@@ -52,7 +52,7 @@ const ModuleDetailsNavTab = () => {
                             duration={500}
                             spy={true}
                             activeClass="active-tabs-overlay module-active-tabs-overlay"
-                            onSetActive={onActiveHandler}
+                            onSetActive={() => onActiveHandler(false)}
                         >
                             Timetable
                         </Link>
@@ -67,7 +67,7 @@ const ModuleDetailsNavTab = () => {
                             duration={500}
                             spy={true}
                             activeClass="active-tabs-overlay module-active-tabs-overlay"
-                            onSetActive={onActiveHandler}
+                            onSetActive={() => onActiveHandler(false)}
                         >
                             Reviews
                         </Link>

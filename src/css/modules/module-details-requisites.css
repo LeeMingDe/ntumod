@@ -44,3 +44,11 @@
 .module-req-container .module-current-link .current-mod-content:hover {
   background-color: #2d479c;
 }
+
+.module-req-disclaimer {
+  background-color: #e2d7456b;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  border: 1px solid #e2b045d7;
+  color: #965c06;
+}

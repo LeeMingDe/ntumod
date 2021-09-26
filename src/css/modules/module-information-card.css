@@ -5,12 +5,12 @@
   flex-wrap: wrap;
 }
 .Module-card-container .module-card-left-container {
-  font-size: clamp(0.75rem, 1.4vh, 1.25rem);
+  font-size: clamp(0.75rem, 1.4vh, 1rem);
 }
 .Module-card-container .module-card-left-container .title-container {
   color: #181C62;
   font-weight: bold;
-  font-size: clamp(1rem, 1.6vh, 1.75rem);
+  font-size: clamp(1.5rem, 1.6vh, 1.75rem);
   margin: 0.4em 0;
 }
 .Module-card-container .module-card-left-container .title-container .title {
@@ -53,9 +53,9 @@
 }
 .Module-card-container .module-card-right-container {
   flex: 20%;
-  font-size: clamp(0.75rem, 1.4vh, 1.25rem);
+  font-size: clamp(0.75rem, 1.4vh, 1rem);
   color: #69707A;
-  margin: auto;
+  margin: 2em 3em;
 }
 .Module-card-container .module-card-right-container .exam-container {
   margin: 1rem 0;
@@ -70,8 +70,7 @@
   padding-left: 1.25em;
 }
 .Module-card-container .module-card-right-container .workload-container ul li:before {
-  padding-left: 0.5em;
   content: "•";
-  position: absolute;
-  left: 0;
+  position: relative;
+  margin-right: 0.3em;
 }

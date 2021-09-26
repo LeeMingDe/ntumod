@@ -5,7 +5,7 @@ import { Module } from '../interfaces/modules';
 
 import '../styles/modules/module-details-requisites.scss';
 
-//todo: hover tooltip for the modules
+//TODO: hover tooltip for the modules
 
 interface Props {
     prerequisite?: string,
@@ -98,6 +98,10 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
                         {prereqForArray}
                     </ul>
                 </div>
+            </div>
+            <div className="module-req-disclaimer mt-2">
+                <p>The prerequisite links is displayed for visualization purposes and may not be accurate.
+                    Viewers are encouraged to double check details.</p>
             </div>
         </div>
     )

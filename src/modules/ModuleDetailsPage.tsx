@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Module } from '../interfaces/modules';
-import ModuleInformationCard from './ModuleInformationCard';
+import Disqus from "disqus-react"
 
 import '../styles/modules/module-details-page.scss';
+
+import { Module } from '../interfaces/modules';
+import ModuleInformationCard from './ModuleInformationCard';
 import ModuleDetailsNavTab from './ModuleDetailsNavTab';
 import ModuleDetailsRequisites from './ModuleDetailsRequisites';
 
@@ -78,13 +80,13 @@ const ModuleDetailsPage = () => {
                         prerequisiteFor={moduleInformation?.prerequisiteFor}
                     />
                 </section>
-                <section id="timetable" className=" pt-5 pb-5">
+                <section id="timetable" className="py-5 my-5">
                     <div className="details-header">
                         Timetable
                     </div>
                     <hr className="my-1"/>
                 </section>
-                <section id="reviews" className=" pt-5 pb-5">
+                <section id="reviews" className=" py-5 my-5">
                     <div className="details-header">
                         Reviews
                     </div>
@@ -94,7 +96,6 @@ const ModuleDetailsPage = () => {
             <div>
                 <ModuleDetailsNavTab />
             </div>
-            
         </div>
     );
 };

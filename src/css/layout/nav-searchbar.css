@@ -1,0 +1,22 @@
+.searchbar-wrapper {
+  width: 100%;
+}
+.searchbar-wrapper .search-input {
+  font-size: clamp(0.8rem, 1.5vw, 1.15rem);
+  font-weight: 500;
+  color: #181C62;
+  padding-bottom: 0.25rem;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: inset;
+  border-color: #69707A;
+  background-color: #EBECFE;
+  width: clamp(55%, 65%, 90%);
+}
+.searchbar-wrapper .search-input:focus {
+  outline: none;
+}
+.searchbar-wrapper .search-input::placeholder {
+  color: inherit;
+}

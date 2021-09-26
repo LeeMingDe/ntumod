@@ -7,20 +7,21 @@ export interface Workload {
 export interface Module {
     moduleCode: String,
     title: string,
-    course: string,
-    faculty: string,
-    academicUnits: number,
-    category: Array<string>,
+    course?: string,
+    faculty?: string,
+    academicUnits?: number,
+    category?: Array<string>,
     description?: string,
 
-    // Requsites
+    // Requisites
     prerequisite?: string,
     corequisite?: string,
     preclusion?: string,
+    prerequisiteFor?: string,
 
     availableFor?: string,
-    semesters: Array<String>,
-    exam: string,
+    semesters?: Array<String>,
+    exam?: string,
     workload?: Workload
 
     // Additional Information

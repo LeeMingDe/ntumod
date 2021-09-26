@@ -1,0 +1,25 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+.page-container .content-wrapper {
+  flex: 1;
+  padding-bottom: 3rem;
+  min-height: 100vh;
+}
+.page-container .content-wrapper .main-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2em;
+}
+.page-container .content-wrapper .main-wrapper .nav-tabs {
+  display: flex;
+  justify-content: center;
+  flex: 1 1 25%;
+  width: 100%;
+}
+.page-container .content-wrapper .main-wrapper .main-content {
+  flex: 1 1 75%;
+  width: 100%;
+}

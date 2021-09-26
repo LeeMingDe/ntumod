@@ -1,3 +1,8 @@
 .module-details-container {
   display: flex;
 }
+.module-details-container .details-header {
+  color: #181C62;
+  font-size: clamp(1rem, 1.6vh, 1.5rem);
+  font-weight: bold;
+}

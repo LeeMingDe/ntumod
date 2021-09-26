@@ -1,3 +1,11 @@
+@import '../globalconstants/colors';
+
 .module-details-container {
     display: flex;
+
+    .details-header {
+        color: $dark-blue;
+        font-size: clamp(1rem, 1.6vh, 1.5rem);
+        font-weight: bold;
+    }
 }

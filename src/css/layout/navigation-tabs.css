@@ -21,17 +21,23 @@
 }
 .nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .active-tabs-overlay {
   background-color: #181C62;
-  height: clamp(3em, 1vh, 5em);
-  width: clamp(9em, 2vh, 20em);
+  padding: 0.75em 2em;
   border-radius: 1em;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .module-active-tabs-overlay {
+  padding: 0.75em 1.25em;
+}
 .nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .tabs-title {
   cursor: pointer;
 }
 .nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .tabs-title:hover {
   text-decoration: underline;
+}
+.nav-tabs-container .module-nav-tabs {
+  height: clamp(12em, 4vh, 20em);
+  width: clamp(12em, 4vh, 20em);
 }

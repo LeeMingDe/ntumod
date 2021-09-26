@@ -1,0 +1,47 @@
+.pagination-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pagination-bar {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-bar .page-number {
+  padding: 0.25em 0.638em;
+  color: #181C62;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  margin: 1em;
+}
+.pagination-bar .page-number.active {
+  background-color: #181C62;
+  color: white;
+  border-radius: 50%;
+}
+.pagination-bar button {
+  background-color: transparent;
+  border: none;
+  color: #181C62;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.pagination-bar button .double-chevron {
+  margin-top: 0.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.pagination-bar button .single-chevron {
+  margin-top: 0.25rem;
+  width: 0.85rem;
+  height: 0.85rem;
+}
+.pagination-bar button .left-chevron {
+  transform: scaleX(-1);
+}
+.pagination-bar .no-display {
+  display: none;
+}

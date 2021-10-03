@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
 
 import { Module } from '../interfaces/modules';
 import ModuleInformationCard from './ModuleInformationCard';
@@ -8,92 +9,7 @@ import chevron from '../icons/chevron.svg';
 import doubleChevron from '../icons/doublechevron.svg'
 import ModuleFilter from './ModuleFilter';
 
-interface Props {
-    
-}
-
-const DUMMY_DATA = [
-    {
-        moduleCode: "CS6969",
-        title: "Digital connections and physical needs",
-        course: "com sci",
-        faculty: "School of computing",
-        academicUnits: 3,
-        category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
-        prerequisite: "CS6901",
-        preclusion: "asdas",
-        availableFor: "CS Year 2, CS Year 3",
-        semesters: ["Semester 1", "Semester 2", "Special Term 1", "Special Term 2"],
-        isPassFail: true,
-        exam: "27-Nov-2021 1:00PM 2 hrs",
-        workload: {
-            tut: 2,
-            lect: 2,
-            lab: 2
-        }
-    },
-    {
-        moduleCode: "CS6969",
-        title: "Digital connections and physical needs",
-        course: "com sci",
-        faculty: "School of computing",
-        academicUnits: 2,
-        category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
-        prerequisite: "CS6901",
-        corequisite: "asdas",
-        preclusion: "asdas",
-        availableFor: "CS Year 2, CS Year 3",
-        semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
-        isPassFail: false,
-        exam: "27-Nov-2021 1:00PM 2 hrs",
-        workload: {
-            tut: 2,
-            lect: 2,
-            lab: 2
-        }
-    },
-    {
-        moduleCode: "CS6969",
-        title: "Digital connections and physical needs",
-        course: "com sci",
-        faculty: "School of computing",
-        academicUnits: 3,
-        category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
-        description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
-        prerequisite: "CS6901",
-        corequisite: "asdas",
-        availableFor: "CS Year 2, CS Year 3",
-        semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
-        exam: "27-Nov-2021 1:00PM 2 hrs",
-        workload: {
-            tut: 2,
-            lect: 2,
-            lab: 2
-        }
-    }
-]
-
-const ModulePagination: React.FC<Props> = () => {
+const ModulePagination = () => {
     const [data, setData] = useState<Array<Module>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [itemsPerPage, setItemsPerPage] = useState<number | null>(null);
@@ -103,11 +19,23 @@ const ModulePagination: React.FC<Props> = () => {
     const [minPageNumberLimit, setMinPageNumberLimit] = useState<number>(0);
 
     useEffect(() => {
-        setData(DUMMY_DATA);
+        const fetchData = async () => {
+            await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/modules`)
+            .then(res => {
+                setData(res.data);
+            })
+            .catch(err => {
+                alert(err.response.data.message)
+            });
+        }
+        fetchData()
+    }, [])
+
+    useEffect(() => {
         const indexOfLastItem = currentPage * itemsPerPage;
         const indexOfFirstItem = indexOfLastItem - itemsPerPage;
         setCurrentItems(data.slice(indexOfFirstItem, indexOfLastItem));
-        setItemsPerPage(1);
+        setItemsPerPage(5);
     }, [data, currentPage, itemsPerPage]);
 
     const pages = [];
@@ -186,17 +114,16 @@ const ModulePagination: React.FC<Props> = () => {
                         <ModuleInformationCard
                             key={index}
                             moduleCode={moduleInformation.moduleCode}
-                            title={moduleInformation.title}
-                            course={moduleInformation.course}
+                            moduleName={moduleInformation.moduleName}
+                            programme={moduleInformation.programme}
                             faculty={moduleInformation.faculty}
-                            academicUnits={moduleInformation.academicUnits}
-                            category={moduleInformation.category}
+                            au={moduleInformation.au}
+                            // category={moduleInformation.category}
                             description={moduleInformation.description}
                             prerequisite={moduleInformation.prerequisite}
-                            corequisite={moduleInformation.corequisite}
                             preclusion={moduleInformation.preclusion}
-                            availableFor={moduleInformation.availableFor}
-                            semesters={moduleInformation.semesters}
+                            notAvailableFor={moduleInformation.notAvailableFor}
+                            // semesters={moduleInformation.semesters}
                             isPassFail={moduleInformation.isPassFail}
                             exam={moduleInformation.exam}
                             workload={moduleInformation.workload}

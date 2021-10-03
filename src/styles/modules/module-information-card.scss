@@ -7,6 +7,7 @@
 
     .module-card-left-container {
         font-size: clamp(0.75rem, 1.4vh, 1rem);
+        flex: 50%;
     
         .title-container {
             color: $dark-blue;
@@ -51,12 +52,7 @@
             }
         }
     
-        .description-container {
-            margin: 1em 0;
-            color: $light-grey;
-        }
-    
-        .additional-info-container {
+        .text-information-container {
             margin: 1em 0;
             color: $light-grey;
         }

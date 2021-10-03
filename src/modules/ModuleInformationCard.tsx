@@ -16,28 +16,20 @@ const ModuleInformationCard: React.FC<Props> = props => {
         setmoduleDetails(props);
     }, [props])
 
-    const renderCategory = moduleDetails?.category.map((items, idx) => {
-        return <div key={idx} className="category-wrapper">
-            {items}
-        </div>
-    })
+    // const renderCategory = moduleDetails?.category.map((items, idx) => {
+    //     return <div key={idx} className="category-wrapper">
+    //         {items}
+    //     </div>
+    // })
 
     const renderRequisites = () => {
         let prerequisite = null;
-        let corequisite = null;
         let preclusion = null;
         if (moduleDetails?.prerequisite) {
             prerequisite = <div className="my-1">
-                <b>Prerequisites</b>
+                <b>Prerequisites and Corequisite</b>
                 {"\n"}
                 {moduleDetails?.prerequisite}
-            </div>
-        }
-        if (moduleDetails?.corequisite) {
-            corequisite = <div className="my-1">
-                <b>Corequisites</b>
-                {"\n"}
-                {moduleDetails?.corequisite}
             </div>
         }
         if (moduleDetails?.preclusion) {
@@ -47,25 +39,24 @@ const ModuleInformationCard: React.FC<Props> = props => {
                 {moduleDetails?.preclusion}
             </div>
         }
-        return <div className="additional-info-container">
+        return <div className="text-information-container">
             {prerequisite}
-            {corequisite}
             {preclusion}
         </div>
     }
 
-    const renderSemesters = moduleDetails?.semesters.map((items, idx) => {
-        return <div key={idx}>
-            <b>{items}</b>
-        </div>
-    })
+    // const renderSemesters = moduleDetails?.semesters.map((items, idx) => {
+    //     return <div key={idx}>
+    //         <b>{items}</b>
+    //     </div>
+    // })
 
     const renderWorkload = <div>
-        {moduleDetails?.workload.lab + moduleDetails?.workload.tut + moduleDetails?.workload.lect} hours
+        {moduleDetails?.workload.lab + moduleDetails?.workload.tutorial + moduleDetails?.workload.lecture} hours
         <ul>
-            <li>Lecture: {moduleDetails?.workload.lect}</li>
-            <li>Tutorial: {moduleDetails?.workload.tut}</li>
-            <li>Lab: {moduleDetails?.workload.lab}</li>
+            <li>Lecture: {moduleDetails?.workload.lecture} Hours</li>
+            <li>Tutorial: {moduleDetails?.workload.tutorial} Hours</li>
+            <li>Lab: {moduleDetails?.workload.lab} Hours</li>
         </ul>
     </div>
 
@@ -74,48 +65,58 @@ const ModuleInformationCard: React.FC<Props> = props => {
             <div className="module-card-left-container">
                 <div className="title-container">
                     <Link 
-                        to={`/module/${moduleDetails?.moduleCode}/${moduleDetails?.title.toLowerCase().replaceAll(" ", "-")}`} 
+                        to={`/module/${moduleDetails?.moduleCode}/${moduleDetails?.moduleName.toLowerCase().replaceAll(" ", "-")}`} 
                         className="title"
                     >
-                        {`${moduleDetails?.moduleCode} ${moduleDetails?.title}`}
+                        {`${moduleDetails?.moduleCode} ${moduleDetails?.moduleName.split(" ").map(word =>
+                            `${word.substring(0,1).toUpperCase()}${word.substring(1).toLowerCase()}`)
+                        .join(" ")}`}
                     </Link>
                 </div>
-                <div className="course-credit-container">
-                    {`${moduleDetails?.course } · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.academicUnits}AUs`}
+                <div className="text-information-container">
+                    {`${moduleDetails?.programme } · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.au}AUs`}
                 </div>
                 {props.detailedView ? <hr className="horizontal-divider"/> : null}
-                {props.detailedView ? <div className="category-container">
+                {/* {props.detailedView ? <div className="category-container">
                         {renderCategory}
                     </div>
                     : null
-                }
-                <div className="description-container">
+                } */}
+                <div className="text-information-container">
                     {moduleDetails?.description}
                 </div>
                 {renderRequisites()}
-                {props.detailedView ? <div className="additional-info-container">
-                        <b>Available for</b>
+                {props.detailedView && moduleDetails?.notAvailableFor
+                    ? <div className="text-information-container">
+                        <b>Not available for</b>
                         {"\n"}
-                        {moduleDetails?.availableFor}
+                        {moduleDetails?.notAvailableFor}
                     </div>
                     : null
                 }
-                
-                {moduleDetails?.isPassFail !== undefined && props.detailedView
-                    ? <div className="additional-info-container">
-                        <b>Additional information</b>
+                {props.detailedView && moduleDetails?.notAvailableToProgramme
+                    ? <div className="text-information-container">
+                        <b>Not available for programmes</b>
                         {"\n"}
-                        Module grading is pass/fail
+                        {moduleDetails?.notAvailableToProgramme}
+                    </div>
+                    : null
+                }
+                {props.detailedView && (moduleDetails?.isPassFail || moduleDetails?.isMinor)
+                    ? <div className="text-information-container">
+                        <b>Additional information</b>
+                        {moduleDetails?.isPassFail ? "\nModule grading is pass/fail" : null}
+                        {moduleDetails?.isMinor ? "\nModule can be taken as a minor" : null}
                     </div> 
                     : null
                 }
             </div>
             <div className="module-card-right-container px-2">
-                {renderSemesters}
+                {/* {renderSemesters} */}
                 <div className="exam-container">
                     <b>Exam</b>
                     {"\n"}
-                    {moduleDetails?.exam}
+                    {moduleDetails?.exam.replace("to", "-")}
                 </div>
                 <div className="workload-container">
                     <b>Workload</b>

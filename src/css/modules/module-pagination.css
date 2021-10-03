@@ -1,6 +1,6 @@
 .pagination-content-wrapper {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .pagination-bar {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import AboutUs from './aboutus/AboutUs';
 
 import Footer from './layout/Footer';
 import NavBar from './layout/navbar/NavBar';
@@ -16,14 +17,14 @@ const App = () => {
             <Route path="/module" exact>
                 <ModulePageContainer />
             </Route>
-            <Route path="/module/:modulecode/:moduletitle" exact>
+            <Route path="/module/:moduleCode/:moduleName" exact>
                 <ModuleDetailsPage />
             </Route>
             <Route path="/contribute" exact>
                 <ModulePageContainer />
             </Route>
-            <Route path="/setting" exact>
-                <ModulePageContainer />
+            <Route path="/about-us" exact>
+                <AboutUs />
             </Route>
             <Redirect to="/module" />
         </Switch>

@@ -16,11 +16,11 @@ const DUMMY_PREREQ: Module[] =
 [
     {
         moduleCode: "CS6901",
-        title: "Something"
+        moduleName: "Something"
     },
     {
         moduleCode: "CS6902",
-        title: "Something"
+        moduleName: "Something"
     },
 ]
 
@@ -28,11 +28,11 @@ const DUMMY_PREREQFOR: Module[] =
 [
     {
         moduleCode: "CS7000",
-        title: "Something"
+        moduleName: "Something"
     },
     {
         moduleCode: "CS7002",
-        title: "Something"
+        moduleName: "Something"
     },
 ]
 
@@ -43,6 +43,8 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
 
     useEffect(() => {
         //query for module requisites here
+        console.log(props.prerequisite)
+        console.log(props.prerequisiteFor)
         setModulePrerequisites(DUMMY_PREREQ);
         setModulePrerequisitesFor(DUMMY_PREREQFOR);
     }, [])
@@ -50,7 +52,7 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
     const prereqNeededArray = modulePrerequisites?.map((module, idx) => {
         return <li key={idx}>
             <Link
-            to={`/module/${module?.moduleCode}/${module?.title.toLowerCase().replaceAll(" ", "-")}`} 
+            to={`/module/${module?.moduleCode}/${module?.moduleName.toLowerCase().replaceAll(" ", "-")}`} 
             className="module-req-link">
                 {module?.moduleCode}
             </Link>
@@ -60,7 +62,7 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
     const prereqForArray = modulePrerequisitesFor?.map((module, idx) => {
         return <li key={idx}>
             <Link
-            to={`/module/${module?.moduleCode}/${module?.title.toLowerCase().replaceAll(" ", "-")}`} 
+            to={`/module/${module?.moduleCode}/${module?.moduleName.toLowerCase().replaceAll(" ", "-")}`} 
             className="module-req-link">
                 {module?.moduleCode}
             </Link>

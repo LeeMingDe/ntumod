@@ -14,14 +14,14 @@ const NavigationTabs = () => {
                         Modules
                     </div>
                 </li>
-                <li className="nav-tabs-li">
+                {/* <li className="nav-tabs-li">
                     <div className={locationPath.includes("/contribute") ? "active-tabs-overlay tabs-title" : "tabs-title"}>
                         Contribute
                     </div>
-                </li>
+                </li> */}
                 <li className="nav-tabs-li">
-                    <div className={locationPath.includes("/setting") ? "active-tabs-overlay tabs-title" : "tabs-title"}>
-                        Settings
+                    <div className={locationPath.includes("/about-us") ? "active-tabs-overlay tabs-title" : "tabs-title"}>
+                        About Us
                     </div>
                 </li>
             </ul>

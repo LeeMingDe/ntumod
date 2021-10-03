@@ -6,6 +6,7 @@
 }
 .Module-card-container .module-card-left-container {
   font-size: clamp(0.75rem, 1.4vh, 1rem);
+  flex: 50%;
 }
 .Module-card-container .module-card-left-container .title-container {
   color: #181C62;
@@ -43,11 +44,7 @@
   color: #181C62;
   padding: 0.1em 0.3em;
 }
-.Module-card-container .module-card-left-container .description-container {
-  margin: 1em 0;
-  color: #69707A;
-}
-.Module-card-container .module-card-left-container .additional-info-container {
+.Module-card-container .module-card-left-container .text-information-container {
   margin: 1em 0;
   color: #69707A;
 }

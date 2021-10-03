@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Disqus from "disqus-react"
+import axios from 'axios';
+import Disqus from "disqus-react";
 
 import '../styles/modules/module-details-page.scss';
 
@@ -11,7 +12,7 @@ import ModuleDetailsRequisites from './ModuleDetailsRequisites';
 
 const dummy_data = {
     moduleCode: "CS6969",
-    title: "Digital connections and physical needs",
+    moduleName: "Digital connections and physical needs",
     course: "com sci",
     faculty: "School of computing",
     academicUnits: 3,
@@ -23,27 +24,35 @@ const dummy_data = {
     obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
     nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
     tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
-    prerequisite: "CS6901, CS6902, CS6901, CS6902, CS6901",
-    corequisite: "asdas",
+    prequisitie: "CS6901, CS6902, CS6901, CS6902, CS6901",
     prerequisiteFor: "CS7000, CS7002",
     availableFor: "CS Year 2, CS Year 3",
-    semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
+    // semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
     exam: "27-Nov-2021 1:00PM 2 hrs",
     workload: {
-        tut: 2,
-        lect: 2,
+        tutorial: 2,
+        lecture: 2,
         lab: 2
     }
 };
 
 const ModuleDetailsPage = () => {
     const [moduleInformation, setModuleInformation] = useState<Module>();
-    const { modulecode, moduletitle} = useParams();
+    const { moduleCode, moduleName} = useParams();
+    console.log(moduleCode, moduleName)
 
     useEffect(() => {
-        //query module info from database here
-        setModuleInformation(dummy_data);
-    }, [])
+        const fetchData = async () => {
+            await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/modules/${moduleCode}/${moduleName}`)
+            .then(res => {
+                setModuleInformation(res.data);
+            })
+            .catch(err => {
+                alert(err.response.data.message)
+            });
+        }
+        fetchData()
+    }, [moduleCode, moduleName])
     
     return (
         <div className="module-details-container">
@@ -52,21 +61,21 @@ const ModuleDetailsPage = () => {
                     {moduleInformation == null ? null :
                         <ModuleInformationCard
                             moduleCode={moduleInformation?.moduleCode}
-                            title={moduleInformation?.title}
-                            course={moduleInformation?.course}
+                            moduleName={moduleInformation?.moduleName}
+                            programme={moduleInformation?.programme}
                             faculty={moduleInformation?.faculty}
-                            academicUnits={moduleInformation?.academicUnits}
-                            category={moduleInformation?.category}
+                            au={moduleInformation?.au}
+                            // category={moduleInformation?.category}
                             description={moduleInformation?.description}
                             prerequisite={moduleInformation?.prerequisite}
-                            corequisite={moduleInformation?.corequisite}
                             preclusion={moduleInformation?.preclusion}
-                            availableFor={moduleInformation?.availableFor}
-                            semesters={moduleInformation?.semesters}
+                            notAvailableFor={moduleInformation?.notAvailableFor}
+                            // semesters={moduleInformation?.semesters}
                             isPassFail={moduleInformation?.isPassFail}
                             exam={moduleInformation?.exam}
                             workload={moduleInformation?.workload}
                             detailedView = {true}
+                            isMinor={moduleInformation?.isMinor}
                         />
                     }
                 </section>

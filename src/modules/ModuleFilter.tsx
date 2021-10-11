@@ -1,77 +1,157 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Module } from '../interfaces/modules';
 
 import '../styles/modules/module-filter.scss';
-// import { academicUnitsFilterPredicate, examsFilterPredicate, moduleDaysFilterPredicate, othersFilterPredicate, semesterFilterPredicate } from '../util/ModuleFilterPredicate';
 
 interface Props {
-    data: Array<Module>,
-    setData: React.Dispatch<React.SetStateAction<Module[]>>
+    setParams: React.Dispatch<React.SetStateAction<URLSearchParams>>
 }
 
 const semesterOffered = ["Semester 1", "Semester 2", "Special Term I", "Special Term II"];
 const examsAndGrading = ["No Exams", "Pass/Fail"];
 const academicUnits = ["0 to 1 Aus", "2 AUs", "3 AUs", "4 AUs", "5 AUs and above"];
 const moduleDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday/Sunday"];
-const otherOptions = ["Lab-based module", "Year-long module", "FYP", "Online module"];
-const filterDescriptions = semesterOffered.concat(examsAndGrading, academicUnits, moduleDays, otherOptions);
+const otherOptions = ["Lab-based module", "Online module"];
+// const filterDescriptions = semesterOffered.concat(examsAndGrading, academicUnits, moduleDays, otherOptions);
 
-const defaultCheckboxState = Array(20).fill(false);
-
-// const filterPredicates = semesterFilterPredicate.concat(examsFilterPredicate, academicUnitsFilterPredicate,
-//     moduleDaysFilterPredicate, othersFilterPredicate);
+const semesterOfferedDefaultCheckbox = Array(semesterOffered.length).fill(false);
+const examsAndGradingDefaultCheckbox = Array(examsAndGrading.length).fill(false);
+const academicUnitsDefaultCheckbox = Array(academicUnits.length).fill(false);
+const moduleDaysDefaultCheckbox = Array(moduleDays.length).fill(false);
+const otherOptionsDefaultCheckbox = Array(otherOptions.length).fill(false);
 
 const ModuleFilter: React.FC<Props> = props => {
-    const [originalData, setOriginalData] = useState<Array<Module>>([])
-    const [filteredData, setFilteredData] = useState<Array<Module>>([]);
-    const [checkboxState, setCheckboxState] = useState<Array<boolean>>(defaultCheckboxState);
+    const { setParams } = props
 
-    useEffect(() => {
-        setFilteredData(props.data);
-        setOriginalData(props.data);
-    }, [props.data])
+    const [semesterOfferedCheckbox, setSemesterOfferedCheckbox] = useState<Array<boolean>>(semesterOfferedDefaultCheckbox);
+    const [examsAndGradingCheckbox, setExamsAndGradingCheckbox] = useState<Array<boolean>>(examsAndGradingDefaultCheckbox);
+    const [academicUnitsCheckbox, setAcademicUnitsCheckbox] = useState<Array<boolean>>(academicUnitsDefaultCheckbox);
+    const [moduleDaysCheckbox, setModuleDaysCheckbox] = useState<Array<boolean>>(moduleDaysDefaultCheckbox);
+    const [otherOptionsCheckbox, setOtherOptionsCheckbox] = useState<Array<boolean>>(otherOptionsDefaultCheckbox);
+    
+    useEffect(()=> {
+        let params = new URLSearchParams();
+        let counter = 0;
+        for (let i = 0; i < semesterOfferedCheckbox.length; i++) {
+            if (semesterOfferedCheckbox[i]) {
+                params.append(`sem[${counter}]`, `${i}`);
+            }
+        }
+        if (examsAndGradingCheckbox[0]) {
+            params.append("exam", "true");        
+        }
+        if (examsAndGradingCheckbox[1]) {
+            params.append("isPassFail", "true");        
+        }
+        counter = 0;
+        for (let i = 0; i < academicUnitsCheckbox.length; i++) {
+            if (academicUnitsCheckbox[i]) {
+                params.append(`au[${counter}]`, `${i}`);
+            }
+        }
+        counter = 0;
+        for (let i = 0; i < moduleDaysCheckbox.length; i++) {
+            if (moduleDaysCheckbox[i]) {
+                params.append(`schedule[${counter}]`, `${i}`);
+            }
+        }
+        if (otherOptionsCheckbox[0]) {
+            params.append("isLabBased", "true");
+        }
+        if (otherOptionsCheckbox[1]) {
+            params.append("isOnline", "true");
+        }
+        setParams(params)
+    }, [setParams, semesterOfferedCheckbox, examsAndGradingCheckbox, academicUnitsCheckbox, moduleDaysCheckbox, otherOptionsCheckbox]);
 
-    const checkboxClickHandler = (event, idx) => {
-        // setCheckboxState(prevState => {
-        //     prevState[idx] = event.target.checked;
-        //     if (event.target.checked) {
-        //         setFilteredData(prevState => prevState.filter(filterPredicates[idx]));
-        //     } else {
-        //         setFilteredData(prevState => {
-        //             prevState = originalData;
-        //             for (let i = 0; i < checkboxState.length; i++) {
-        //                 if (checkboxState[i]) {
-        //                     prevState.filter(filterPredicates[i]);
-        //                 }
-        //             }
-        //             return prevState
-        //         })
-        //     }
-        //     return prevState;
-        // })
-        props.setData(filteredData)
+    const clearFilterOptionsHandler = () => {
+        setSemesterOfferedCheckbox(Array(semesterOffered.length).fill(false))
+        setExamsAndGradingCheckbox(Array(examsAndGrading.length).fill(false))
+        setAcademicUnitsCheckbox(Array(academicUnits.length).fill(false))
+        setModuleDaysCheckbox(Array(moduleDays.length).fill(false))
+        setOtherOptionsCheckbox(Array(otherOptions.length).fill(false))
+    }
+
+    const checkboxChangeHandler = (idx, setCheckboxState) => {
+        setCheckboxState(prevState => {
+            prevState= prevState.slice()
+            prevState[idx] = !prevState[idx]
+            return prevState
+        })
+        // console.log(semesterOfferedCheckbox)
+
+        // console.log(academicUnitsCheckbox)
+        // console.log(moduleDaysCheckbox)
+        // console.log(otherOptionsCheckbox)
     };
 
-    const renderFilterDescription = filterDescriptions.map((items, idx) => {
+    const renderSemesterOffered = semesterOffered.map((items, idx) => {
         const filterOption = <div key={idx}>
             <label className="filter-options-wrapper">
                 <input
                     type="checkbox"
-                    onClick={(e) => checkboxClickHandler(e, idx)}  
-                />
+                    onChange={() => checkboxChangeHandler(idx, setSemesterOfferedCheckbox)}
+                /> 
                 <span className="filter-options-description">{items}</span>
             </label>
         </div>
         return filterOption;
     });
-
-    const renderSemesterOffered = renderFilterDescription.slice(0,4);
-    const renderExamsAndGrading = renderFilterDescription.slice(4,6);
-    const renderAcademicUnits = renderFilterDescription.slice(6,11);
-    const renderModuleDays = renderFilterDescription.slice(11,17);
-    const renderOtherOptions = renderFilterDescription.slice(17,21);
+    const renderExamsAndGrading = examsAndGrading.map((items, idx) => {
+        const filterOption = <div key={idx}>
+            <label className="filter-options-wrapper">
+                <input
+                    type="checkbox"
+                    onChange={() => checkboxChangeHandler(idx, setExamsAndGradingCheckbox)}
+                /> 
+                <span className="filter-options-description">{items}</span>
+            </label>
+        </div>
+        return filterOption;
+    });
+    const renderAcademicUnits = academicUnits.map((items, idx) => {
+        const filterOption = <div key={idx}>
+            <label className="filter-options-wrapper">
+                <input
+                    type="checkbox"
+                    onChange={() => checkboxChangeHandler(idx, setAcademicUnitsCheckbox)}
+                /> 
+                <span className="filter-options-description">{items}</span>
+            </label>
+        </div>
+        return filterOption;
+    });
+    const renderModuleDays = moduleDays.map((items, idx) => {
+        const filterOption = <div key={idx}>
+            <label className="filter-options-wrapper">
+                <input
+                    type="checkbox"
+                    onChange={() => checkboxChangeHandler(idx, setModuleDaysCheckbox)}
+                /> 
+                <span className="filter-options-description">{items}</span>
+            </label>
+        </div>
+        return filterOption;
+    });
+    const renderOtherOptions = otherOptions.map((items, idx) => {
+        const filterOption = <div key={idx}>
+            <label className="filter-options-wrapper">
+                <input
+                    type="checkbox"
+                    onChange={() => checkboxChangeHandler(idx, setOtherOptionsCheckbox)}
+                /> 
+                <span className="filter-options-description">{items}</span>
+            </label>
+        </div>
+        return filterOption;
+    });
+    
+    // const renderSemesterOffered = renderFilterDescription.slice(0, firstPartLength);
+    // const renderExamsAndGrading = renderFilterDescription.slice(firstPartLength, secondPartLength);
+    // const renderAcademicUnits = renderFilterDescription.slice(secondPartLength, thirdPartLength);
+    // const renderModuleDays = renderFilterDescription.slice(thirdPartLength, fourthPartLength);
+    // const renderOtherOptions = renderFilterDescription.slice(fourthPartLength, fifthPartLength);
 
     return (
         <div className="module-filter-container">
@@ -79,7 +159,7 @@ const ModuleFilter: React.FC<Props> = props => {
                 <div className="title">
                     Filter results
                 </div>
-                <div className="clear-selection">
+                <div className="clear-selection" onClick={clearFilterOptionsHandler}>
                     Clear
                 </div>
             </div>

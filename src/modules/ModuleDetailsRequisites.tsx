@@ -43,8 +43,8 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
 
     useEffect(() => {
         //query for module requisites here
-        console.log(props.prerequisite)
-        console.log(props.prerequisiteFor)
+        // console.log(props.prerequisite)
+        // console.log(props.prerequisiteFor)
         setModulePrerequisites(DUMMY_PREREQ);
         setModulePrerequisitesFor(DUMMY_PREREQFOR);
     }, [])

@@ -7,10 +7,10 @@ export interface Workload {
 export interface Module {
     moduleCode: String,
     moduleName: string,
-    programme?: string,
+    programme?: Array<String>,
     faculty?: string,
     au?: number,
-    // category?: Array<string>,
+    category?: Array<string>,
     description?: string,
 
     // Requisites

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import { Module } from '../interfaces/modules';
 import ModuleInformationCard from './ModuleInformationCard';
@@ -10,6 +11,7 @@ import doubleChevron from '../icons/doublechevron.svg'
 import ModuleFilter from './ModuleFilter';
 
 const ModulePagination = () => {
+    const [params, setParams] = useState<URLSearchParams>(new URLSearchParams());
     const [data, setData] = useState<Array<Module>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [itemsPerPage, setItemsPerPage] = useState<number | null>(null);
@@ -18,9 +20,16 @@ const ModulePagination = () => {
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState<number>(5);
     const [minPageNumberLimit, setMinPageNumberLimit] = useState<number>(0);
 
+    const history = useHistory();
+
     useEffect(() => {
+        const url = `${process.env.REACT_APP_API_URL}/api/v1/modules`;
+        let paramsString = "";
+        if (params.toString) {
+            paramsString = "?" + params;
+        }
         const fetchData = async () => {
-            await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/modules`)
+            await axios.get(url + paramsString)
             .then(res => {
                 setData(res.data);
             })
@@ -29,7 +38,8 @@ const ModulePagination = () => {
             });
         }
         fetchData()
-    }, [])
+        history.push(paramsString)
+    }, [params, history])
 
     useEffect(() => {
         const indexOfLastItem = currentPage * itemsPerPage;
@@ -118,7 +128,7 @@ const ModulePagination = () => {
                             programme={moduleInformation.programme}
                             faculty={moduleInformation.faculty}
                             au={moduleInformation.au}
-                            // category={moduleInformation.category}
+                            category={moduleInformation.category}
                             description={moduleInformation.description}
                             prerequisite={moduleInformation.prerequisite}
                             preclusion={moduleInformation.preclusion}
@@ -176,7 +186,7 @@ const ModulePagination = () => {
                         </li>
                     </ul>
                 </div>
-                <ModuleFilter data={data} setData={setData}/>
+                <ModuleFilter setParams={setParams}/>
             </div>
 
         </React.Fragment>

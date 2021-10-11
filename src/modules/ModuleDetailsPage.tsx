@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Disqus from "disqus-react";
+// import Disqus from "disqus-react";
 
 import '../styles/modules/module-details-page.scss';
 
@@ -9,32 +9,6 @@ import { Module } from '../interfaces/modules';
 import ModuleInformationCard from './ModuleInformationCard';
 import ModuleDetailsNavTab from './ModuleDetailsNavTab';
 import ModuleDetailsRequisites from './ModuleDetailsRequisites';
-
-const dummy_data = {
-    moduleCode: "CS6969",
-    moduleName: "Digital connections and physical needs",
-    course: "com sci",
-    faculty: "School of computing",
-    academicUnits: 3,
-    category: ["core", "broadening and deepening/get-pe(sts)", "broadening and deepening/ue"],
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,`,
-    prequisitie: "CS6901, CS6902, CS6901, CS6902, CS6901",
-    prerequisiteFor: "CS7000, CS7002",
-    availableFor: "CS Year 2, CS Year 3",
-    // semesters: ["Sem 1", "Sem 2", "ST 1", "ST 2"],
-    exam: "27-Nov-2021 1:00PM 2 hrs",
-    workload: {
-        tutorial: 2,
-        lecture: 2,
-        lab: 2
-    }
-};
 
 const ModuleDetailsPage = () => {
     const [moduleInformation, setModuleInformation] = useState<Module>();
@@ -65,7 +39,7 @@ const ModuleDetailsPage = () => {
                             programme={moduleInformation?.programme}
                             faculty={moduleInformation?.faculty}
                             au={moduleInformation?.au}
-                            // category={moduleInformation?.category}
+                            category={moduleInformation?.category}
                             description={moduleInformation?.description}
                             prerequisite={moduleInformation?.prerequisite}
                             preclusion={moduleInformation?.preclusion}

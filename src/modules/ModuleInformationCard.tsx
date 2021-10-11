@@ -16,11 +16,11 @@ const ModuleInformationCard: React.FC<Props> = props => {
         setmoduleDetails(props);
     }, [props])
 
-    // const renderCategory = moduleDetails?.category.map((items, idx) => {
-    //     return <div key={idx} className="category-wrapper">
-    //         {items}
-    //     </div>
-    // })
+    const renderCategory = moduleDetails?.category.map((items, idx) => {
+        return <div key={idx} className="category-wrapper">
+            {items}
+        </div>
+    })
 
     const renderRequisites = () => {
         let prerequisite = null;
@@ -74,14 +74,14 @@ const ModuleInformationCard: React.FC<Props> = props => {
                     </Link>
                 </div>
                 <div className="text-information-container">
-                    {`${moduleDetails?.programme } · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.au}AUs`}
+                    {`${moduleDetails?.programme.reduce((prev, next) => prev + "·" + next)} · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.au}AUs`}
                 </div>
                 {props.detailedView ? <hr className="horizontal-divider"/> : null}
-                {/* {props.detailedView ? <div className="category-container">
+                {props.detailedView ? <div className="category-container">
                         {renderCategory}
                     </div>
                     : null
-                } */}
+                }
                 <div className="text-information-container">
                     {moduleDetails?.description}
                 </div>

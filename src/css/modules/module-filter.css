@@ -1,5 +1,5 @@
 .module-filter-container {
-  margin: 1em 0em 1em 5em;
+  margin: 1em 5em 1em 5em;
 }
 .module-filter-container .title-container {
   background-color: #181C62;
@@ -8,6 +8,7 @@
   border-radius: 1.5em 1.5em 0 0;
   padding: 0.65em 0.8em 0.85em 0.8em;
   align-items: center;
+  justify-content: space-around;
 }
 .module-filter-container .title-container .title {
   font-weight: 600;
@@ -26,6 +27,7 @@
 .module-filter-container .filter-options-container {
   background-color: #EBECFE;
   padding-bottom: 1em;
+  width: min(300px, 35vw);
   border-radius: 0 0 1.5em 1.5em;
 }
 .module-filter-container .filter-options-container .filter-options-wrapper {

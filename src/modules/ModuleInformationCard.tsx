@@ -74,7 +74,7 @@ const ModuleInformationCard: React.FC<Props> = props => {
                     </Link>
                 </div>
                 <div className="text-information-container">
-                    {`${moduleDetails?.programme.reduce((prev, next) => prev + "·" + next)} · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.au}AUs`}
+                    {`${moduleDetails?.programme.reduce((prev, next) => prev + " · " + next)} · ${props.detailedView ? moduleDetails?.faculty + " · " : ""} ${moduleDetails?.au}AUs`}
                 </div>
                 {props.detailedView ? <hr className="horizontal-divider"/> : null}
                 {props.detailedView ? <div className="category-container">

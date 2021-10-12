@@ -1,7 +1,7 @@
 @import '../globalconstants/colors';
 
 .module-filter-container {
-    margin: 1em 0em 1em 5em;
+    margin: 1em 5em 1em 5em;
     
     .title-container {
         background-color: $dark-blue;
@@ -10,6 +10,7 @@
         border-radius: 1.5em 1.5em 0 0;
         padding: 0.65em 0.8em 0.85em 0.8em;
         align-items: center;
+        justify-content: space-around;
 
         .title {
             font-weight: 600;
@@ -32,6 +33,7 @@
     .filter-options-container {
         background-color: $light-blue;
         padding-bottom: 1em;
+        width: min(300px, 35vw);
         border-radius: 0 0 1.5em 1.5em;
 
         .filter-options-wrapper {

@@ -1,5 +1,6 @@
 .module-details-container {
   display: flex;
+  padding-left: 1em;
 }
 .module-details-container .details-header {
   color: #181C62;

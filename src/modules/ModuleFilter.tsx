@@ -119,7 +119,7 @@ const ModuleFilter: React.FC<Props> = props => {
         counter = 0;
         for (let i = 0; i < moduleDaysCheckbox.length; i++) {
             if (moduleDaysCheckbox[i]) {
-                params.append(`schedule[${counter}]`, `${i}`);
+                params.append(`schedule[${counter}]`, `${moduleDays[i].slice(0,3).toUpperCase()}`);
             }
         }
         counter = 0;

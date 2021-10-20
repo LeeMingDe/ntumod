@@ -9,9 +9,11 @@ import '../styles/modules/module-pagination.scss';
 import chevron from '../icons/chevron.svg';
 import doubleChevron from '../icons/doublechevron.svg'
 import ModuleFilter from './ModuleFilter';
+import Loader from '../layout/Loader';
 
 const ModulePagination = () => {
     const [params, setParams] = useState<URLSearchParams>(new URLSearchParams());
+
     const [data, setData] = useState<Array<Module>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [itemsPerPage, setItemsPerPage] = useState<number | null>(null);
@@ -20,6 +22,8 @@ const ModulePagination = () => {
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState<number>(5);
     const [minPageNumberLimit, setMinPageNumberLimit] = useState<number>(0);
 
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    
     const history = useHistory();
 
     useEffect(() => {
@@ -32,6 +36,7 @@ const ModulePagination = () => {
             await axios.get(url + paramsString)
             .then(res => {
                 setData(res.data);
+                setIsLoading(false);
             })
             .catch(err => {
                 alert(err.response.data.message)
@@ -147,7 +152,9 @@ const ModulePagination = () => {
 
     return (
         <React.Fragment>
-            <div className="pagination-content-wrapper">
+            { isLoading 
+                ? <Loader />
+                : <div className="pagination-content-wrapper">
                 <div>
                     {renderData()}
                     <ul className="pagination-bar">
@@ -188,7 +195,7 @@ const ModulePagination = () => {
                 </div>
                 <ModuleFilter setParams={setParams}/>
             </div>
-
+            }
         </React.Fragment>
     );
 }

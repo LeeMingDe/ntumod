@@ -36,6 +36,11 @@
                 padding: 0.75em 1.25em;
             }
             
+            .tabs-link {
+                text-decoration: none;
+                color: $dark-blue;
+            }
+
             .tabs-title {
                 cursor: pointer;
         
@@ -43,6 +48,7 @@
                     text-decoration: underline;
                 }
             }
+
         }
     }
 

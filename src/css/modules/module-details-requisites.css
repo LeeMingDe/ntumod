@@ -26,12 +26,10 @@
   color: #181C62;
 }
 .module-req-container .module-req-list .module-req-link:hover {
-  color: #2d479c;
+  color: #3856b8;
 }
-.module-req-container .module-current-link {
-  text-decoration: none;
-}
-.module-req-container .module-current-link .current-mod-content {
+.module-req-container .current-mod-content {
+  cursor: default;
   font-size: 1.25rem;
   color: white;
   background-color: #181C62;
@@ -40,9 +38,6 @@
   border-radius: 7px;
   font-weight: bold;
   text-decoration: none;
-}
-.module-req-container .module-current-link .current-mod-content:hover {
-  background-color: #2d479c;
 }
 
 .module-req-disclaimer {

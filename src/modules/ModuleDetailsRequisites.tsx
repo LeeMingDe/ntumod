@@ -1,53 +1,47 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { Module } from '../interfaces/modules';
+import Loader from '../layout/Loader';
 
 import '../styles/modules/module-details-requisites.scss';
 
 //TODO: hover tooltip for the modules
 
 interface Props {
+    moduleName: string,
+    moduleCode: string,
     prerequisite?: string,
     prerequisiteFor?: string
 }
 
-const DUMMY_PREREQ: Module[] = 
-[
-    {
-        moduleCode: "CS6901",
-        moduleName: "Something"
-    },
-    {
-        moduleCode: "CS6902",
-        moduleName: "Something"
-    },
-]
-
-const DUMMY_PREREQFOR: Module[] = 
-[
-    {
-        moduleCode: "CS7000",
-        moduleName: "Something"
-    },
-    {
-        moduleCode: "CS7002",
-        moduleName: "Something"
-    },
-]
-
 const ModuleDetailsRequisites: React.FC<Props> = props => {
-    const [ modulePrerequisites, setModulePrerequisites] = useState<Module[]>();
-    const [ modulePrerequisitesFor, setModulePrerequisitesFor] = useState<Module[]>();
+    const { prerequisite, prerequisiteFor } = props;
+
+    const [modulePrerequisites, setModulePrerequisites] = useState<Module[]>();
+    const [modulePrerequisitesFor, setModulePrerequisitesFor] = useState<Module[]>();
+    const [isLoading, setIsLoading] = useState<boolean>();
 
 
     useEffect(() => {
-        //query for module requisites here
-        // console.log(props.prerequisite)
-        // console.log(props.prerequisiteFor)
-        setModulePrerequisites(DUMMY_PREREQ);
-        setModulePrerequisitesFor(DUMMY_PREREQFOR);
-    }, [])
+        let queries = new URLSearchParams();
+
+        queries.append("prerequisite", prerequisite ? prerequisite : "");
+        queries.append("prerequisiteFor", prerequisiteFor ? prerequisiteFor : "");
+        const fetchData = async () => {
+            await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/modules/get-requisite?${queries}`)
+            .then(res => {
+                setModulePrerequisites(res.data[0]);
+                setModulePrerequisitesFor(res.data[1]);
+                setIsLoading(false)
+            })
+            .catch(err => {
+                alert(err.response.data.message)
+            });
+        }
+        fetchData()
+    }, [prerequisite, prerequisiteFor])
 
     const prereqNeededArray = modulePrerequisites?.map((module, idx) => {
         return <li key={idx}>
@@ -70,42 +64,45 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
     })
 
     return (
-        <div>
-            <div className="module-req-container">
-                <div className="pe-2">
-                    <div className="req-col-header">
-                        <div></div>Prerequisites needed
-                    </div>
-                    <ul className="module-req-list">
-                        {prereqNeededArray}
-                    </ul>
-                </div>
-                <BsArrowRight size="40"/>
-                <div className="px-2">
-                    <div className="req-col-header">
-                        Current module
-                    </div>
-                    <Link className="module-current-link" to="">
-                        <div className="current-mod-content">
-                            CS6969
+        <React.Fragment>
+            { isLoading
+                ? <Loader />
+                : <div>
+                    <div className="module-req-container">
+                        <div className="pe-2">
+                            <div className="req-col-header">
+                                <div></div>Prerequisites needed
+                            </div>
+                            <ul className="module-req-list">
+                                {prereqNeededArray}
+                            </ul>
                         </div>
-                    </Link>
-                </div>
-                <BsArrowRight size="40"/>
-                <div className="ps-2">
-                    <div className="req-col-header">
-                        Prerequisite for
+                        <BsArrowRight size="40"/>
+                        <div className="px-2">
+                            <div className="req-col-header">
+                                Current module
+                            </div>
+                            <div className="current-mod-content">
+                                {props.moduleCode}
+                            </div>
+                        </div>
+                        <BsArrowRight size="40"/>
+                        <div className="ps-2">
+                            <div className="req-col-header">
+                                Prerequisite for
+                            </div>
+                            <ul className="module-req-list">
+                                {prereqForArray}
+                            </ul>
+                        </div>
                     </div>
-                    <ul className="module-req-list">
-                        {prereqForArray}
-                    </ul>
+                    <div className="module-req-disclaimer mt-2">
+                        <p>The prerequisite links is displayed for visualization purposes and may not be accurate.
+                            Viewers are encouraged to double check details.</p>
+                    </div>
                 </div>
-            </div>
-            <div className="module-req-disclaimer mt-2">
-                <p>The prerequisite links is displayed for visualization purposes and may not be accurate.
-                    Viewers are encouraged to double check details.</p>
-            </div>
-        </div>
+            }
+        </React.Fragment>
     )
 };
 

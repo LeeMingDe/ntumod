@@ -32,6 +32,10 @@
 .nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .module-active-tabs-overlay {
   padding: 0.75em 1.25em;
 }
+.nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .tabs-link {
+  text-decoration: none;
+  color: #181C62;
+}
 .nav-tabs-container .nav-tabs-wrapper .nav-tabs-li .tabs-title {
   cursor: pointer;
 }

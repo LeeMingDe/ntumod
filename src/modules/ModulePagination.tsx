@@ -17,6 +17,7 @@ const ModulePagination = () => {
 
     const [searchInput, setSearchInput] = useState<string>("")
     const [data, setData] = useState<Array<Module>>([]);
+    const [filteredData, setFilteredData] = useState<Array<Module>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [itemsPerPage, setItemsPerPage] = useState<number | null>(null);
     const [currentItems, setCurrentItems] = useState<Array<Module>>([]);
@@ -38,6 +39,7 @@ const ModulePagination = () => {
             await axios.get(url + paramsString)
             .then(res => {
                 setData(res.data);
+                setFilteredData(res.data);
                 setIsLoading(false);
             })
             .catch(err => {
@@ -51,13 +53,20 @@ const ModulePagination = () => {
     useEffect(() => {
         const indexOfLastItem = currentPage * itemsPerPage;
         const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-        setCurrentItems(data.slice(indexOfFirstItem, indexOfLastItem));
+        setCurrentItems(filteredData.slice(indexOfFirstItem, indexOfLastItem));
         setItemsPerPage(5);
-    }, [data, currentPage, itemsPerPage]);
+    }, [filteredData, currentPage, itemsPerPage]);
+
+    useEffect(() => {
+        setFilteredData(prevData => {
+            prevData = data.filter(module => module.moduleCode.toLowerCase().includes(searchInput) || module.moduleName.toLowerCase().includes(searchInput));
+            return prevData;
+        })
+    }, [data, searchInput])
 
     const pages = [];
 
-    for (let i = 1; i <= Math.ceil(data.length/itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(filteredData.length/itemsPerPage); i++) {
         pages.push(i);
     }
 
@@ -127,7 +136,6 @@ const ModulePagination = () => {
         return (
             <ul>
                 {currentItems.map((moduleInformation, index) => {
-                    if (moduleInformation.moduleCode.toLowerCase().includes(searchInput) || moduleInformation.moduleName.toLowerCase().includes(searchInput)) {
                         return (
                             <ModuleInformationCard
                                 key={index}
@@ -148,12 +156,10 @@ const ModulePagination = () => {
                                 detailedView = {false}
                             />
                         );
-                    }
-                    return null;
                 })}
             </ul>
         )
-    }, [currentItems, searchInput]);
+    }, [currentItems]);
 
     return (
         <React.Fragment>

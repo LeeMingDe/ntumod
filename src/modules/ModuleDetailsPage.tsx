@@ -83,7 +83,7 @@ const ModuleDetailsPage = () => {
                                 prerequisiteFor={moduleInformation?.prerequisiteFor}
                             />
                         </section>
-                        <section id="timetable" className="py-5 my-5">
+                        <section id="timetable" className="my-3">
                             <div className="details-header">
                                 Timetable
                             </div>

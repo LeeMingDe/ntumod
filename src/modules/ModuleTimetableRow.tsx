@@ -72,14 +72,16 @@ const ModuleTimetableRow: React.FC<Props> = props => {
             if (timeslots.length === 0) {
                 return <div key={indx} className="timetable-col"/>
             }
-            return timeslots.map((timeslotInfo, idx) =>
-                <ModuleTimeTableCell
-                    key={idx}
-                    isClickable={false}
-                    index={timeslotInfo.index}
-                    details={timeslotInfo.details}
-                    duration={getSlotDuration(timeslotInfo.details)}
-                />)
+            return <div key={indx} className="timetable-col">
+                {timeslots.map((timeslotInfo, idx) =>
+                    <ModuleTimeTableCell
+                        key={idx}
+                        isClickable={false}
+                        index={timeslotInfo.index}
+                        details={timeslotInfo.details}
+                        duration={getSlotDuration(timeslotInfo.details)}
+                    />)}
+                </div>
         })
         return dayDisplay;
     }, [daysArray, props.isExtendedTiming])

@@ -1,0 +1,9 @@
+.timetable {
+  display: table;
+  table-layout: fixed;
+  border: 2px #d6d6d6 solid;
+  border-collapse: collapse;
+  border-bottom: none;
+  border-spacing: 0;
+  height: 1px;
+}

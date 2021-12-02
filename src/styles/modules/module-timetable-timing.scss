@@ -1,0 +1,7 @@
+.timings-container {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-left: 3.5em;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+}

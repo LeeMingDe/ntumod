@@ -53,12 +53,13 @@ const ModuleDetailsNavTab = () => {
                             spy={true}
                             activeClass="active-tabs-overlay module-active-tabs-overlay"
                             onSetActive={() => onActiveHandler(false)}
+                            offset={-65}
                         >
                             Timetable
                         </Link>
                     </div>
                 </li>
-                <li className="nav-tabs-li">
+                {/* <li className="nav-tabs-li">
                     <div className="">
                         <Link 
                             className="tabs-title" 
@@ -72,7 +73,7 @@ const ModuleDetailsNavTab = () => {
                             Reviews
                         </Link>
                     </div>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )

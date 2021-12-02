@@ -10,6 +10,7 @@ import ModuleInformationCard from './ModuleInformationCard';
 import ModuleDetailsNavTab from './ModuleDetailsNavTab';
 import ModuleDetailsRequisites from './ModuleDetailsRequisites';
 import Loader from '../layout/Loader';
+import ModuleDetailsTimetable from './ModuleDetailsTimetable';
 
 const ModuleDetailsPage = () => {
     const [moduleInformation, setModuleInformation] = useState<Module>();
@@ -87,13 +88,18 @@ const ModuleDetailsPage = () => {
                                 Timetable
                             </div>
                             <hr className="my-1"/>
+                            <ModuleDetailsTimetable
+                                timetable={moduleInformation.timetable}
+                                hasSaturday={moduleInformation.hasSaturday}
+                                isExtendedTiming={moduleInformation.isExtendedTiming}
+                            />
                         </section>
-                        <section id="reviews" className=" py-5 my-5">
+                        {/* <section id="reviews" className=" py-5 my-5">
                             <div className="details-header">
                                 Reviews
                             </div>
                             <hr className="my-1"/>
-                        </section>
+                        </section> */}
                     </div>
                     <div>
                         <ModuleDetailsNavTab />

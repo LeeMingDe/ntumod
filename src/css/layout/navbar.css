@@ -23,6 +23,11 @@ body {
   justify-content: center;
   text-decoration: none;
   color: #181C62;
+  margin: 0 0.25em;
+}
+.navbar .logo .logoImg {
+  height: 50px;
+  width: auto;
 }
 .navbar .searchbar {
   display: flex;

@@ -74,7 +74,7 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
                                 <div></div>Prerequisites needed
                             </div>
                             <ul className="module-req-list">
-                                {prereqNeededArray}
+                                {prereqNeededArray ? "-" : prereqNeededArray}
                             </ul>
                         </div>
                         <BsArrowRight size="40"/>
@@ -92,7 +92,7 @@ const ModuleDetailsRequisites: React.FC<Props> = props => {
                                 Prerequisite for
                             </div>
                             <ul className="module-req-list">
-                                {prereqForArray}
+                                {prereqForArray ? "-" : prereqForArray}
                             </ul>
                         </div>
                     </div>

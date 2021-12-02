@@ -16,6 +16,12 @@
         justify-content: center;
         text-decoration: none;
         color: $dark-blue;
+        margin: 0 0.25em;
+
+        .logoImg {
+            height: 50px;
+            width: auto;
+        }
     }
 
     .searchbar {

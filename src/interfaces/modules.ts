@@ -12,6 +12,7 @@ export interface Module {
     au?: number,
     category?: Array<string>,
     description?: string,
+    timetable?: object,
 
     // Requisites
     prerequisite?: string,
@@ -31,4 +32,6 @@ export interface Module {
     // isFinalYearProject?: boolean,
     isPassFail?: boolean,
     isOnline?: boolean
+    hasSaturday?: boolean
+    isExtendedTiming?: boolean
 }

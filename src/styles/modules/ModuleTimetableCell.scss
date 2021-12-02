@@ -1,0 +1,35 @@
+.cell-container {
+    background-color: rgba(223, 61, 88, 0.685);
+    border-bottom: 4px solid rgb(212, 49, 76);
+    height: 100%;
+    display: inline-block;
+    margin: auto;
+    border-radius: 0.2em;
+    font-size: clamp(0.5rem, 2vw, 0.8rem);
+    text-align: start;
+    padding: 0.25em;
+    margin-top: 0.05em;
+    margin-bottom: 0.05em;
+    color: rgba(58, 58, 58, 0.952);
+    font-weight: 500;
+}
+
+.width-1 {
+    width: 95%
+}
+
+.width-2 {
+    width: 190%
+}
+
+.width-3 {
+    width: 285%
+}
+
+.width-4 {
+    width: 380%
+}
+
+.width-5 {
+    width: 475%
+}

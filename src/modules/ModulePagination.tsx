@@ -10,10 +10,12 @@ import chevron from '../icons/chevron.svg';
 import doubleChevron from '../icons/doublechevron.svg'
 import ModuleFilter from './ModuleFilter';
 import Loader from '../layout/Loader';
+import ModuleSearchBar from './ModuleSearchBar';
 
 const ModulePagination = () => {
     const [params, setParams] = useState<URLSearchParams>(new URLSearchParams());
 
+    const [searchInput, setSearchInput] = useState<string>("")
     const [data, setData] = useState<Array<Module>>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [itemsPerPage, setItemsPerPage] = useState<number | null>(null);
@@ -125,30 +127,33 @@ const ModulePagination = () => {
         return (
             <ul>
                 {currentItems.map((moduleInformation, index) => {
-                    return (
-                        <ModuleInformationCard
-                            key={index}
-                            moduleCode={moduleInformation.moduleCode}
-                            moduleName={moduleInformation.moduleName}
-                            programme={moduleInformation.programme}
-                            faculty={moduleInformation.faculty}
-                            au={moduleInformation.au}
-                            category={moduleInformation.category}
-                            description={moduleInformation.description}
-                            prerequisite={moduleInformation.prerequisite}
-                            preclusion={moduleInformation.preclusion}
-                            notAvailableFor={moduleInformation.notAvailableFor}
-                            // semesters={moduleInformation.semesters}
-                            isPassFail={moduleInformation.isPassFail}
-                            exam={moduleInformation.exam}
-                            workload={moduleInformation.workload}
-                            detailedView = {false}
-                        />
-                    );
+                    if (moduleInformation.moduleCode.toLowerCase().includes(searchInput) || moduleInformation.moduleName.toLowerCase().includes(searchInput)) {
+                        return (
+                            <ModuleInformationCard
+                                key={index}
+                                moduleCode={moduleInformation.moduleCode}
+                                moduleName={moduleInformation.moduleName}
+                                programme={moduleInformation.programme}
+                                faculty={moduleInformation.faculty}
+                                au={moduleInformation.au}
+                                category={moduleInformation.category}
+                                description={moduleInformation.description}
+                                prerequisite={moduleInformation.prerequisite}
+                                preclusion={moduleInformation.preclusion}
+                                notAvailableFor={moduleInformation.notAvailableFor}
+                                // semesters={moduleInformation.semesters}
+                                isPassFail={moduleInformation.isPassFail}
+                                exam={moduleInformation.exam}
+                                workload={moduleInformation.workload}
+                                detailedView = {false}
+                            />
+                        );
+                    }
+                    return null;
                 })}
             </ul>
         )
-    }, [currentItems]);
+    }, [currentItems, searchInput]);
 
     return (
         <React.Fragment>
@@ -156,6 +161,7 @@ const ModulePagination = () => {
                 ? <Loader />
                 : <div className="pagination-content-wrapper">
                 <div>
+                    <ModuleSearchBar setSearchInput={setSearchInput} searchInput={searchInput}/>
                     {renderData()}
                     <ul className="pagination-bar">
                         <li>

@@ -1,7 +1,6 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  overflow: auto;
 }
 .page-container .content-wrapper {
   flex: 1;
